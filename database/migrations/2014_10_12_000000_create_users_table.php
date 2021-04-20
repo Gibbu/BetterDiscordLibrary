@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->text('avatar');
             $table->integer('discrim');
-            $table->json('links')->default('[]');
+            $table->json('links')->nullable();
             $table->text('banned')->nullable();
             $table->rememberToken();
             $table->timestamps();
