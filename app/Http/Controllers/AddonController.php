@@ -6,6 +6,7 @@ use App\Models\Addon;
 use App\Rules\Url;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Illuminate\Validation\Rule;
 
 class AddonController extends Controller {
 	public function index($type) {
@@ -44,23 +45,27 @@ class AddonController extends Controller {
 		}
 	}
 	
-	public function update($type) {
+	public function update($type, $name) {
 		if ($type == 'themes' || $type == 'plugins') {
-			$addon = Addon::findOrFail(request()->id);
-			$this->save($addon);
-			
-			return redirect()->back()->with('flash', ['type' => 'success', 'message' => $addon->name.' successfully updated']);
+			$addon = Addon::where(['type' => rtrim($type, 's'), 'name' => $name])->with('user')->firstOrFail();
+			if (Auth::id() == $addon->user->id) {
+				$this->save($addon);
+
+				return redirect()->back()->with('flash', ['type' => 'success', 'message' => $addon->name.' successfully updated']);
+			}
+			return abort(401);
 		}
+		return abort(404);
 	}
 
 	public function destroy($type, $name) {
 		$addon =  Addon::where(['type' => rtrim($type, 's'), 'name' => $name])->firstOrFail();
 		if ($addon->user_id === Auth::id()) {
 			$addon->delete();
-
 			
 			return redirect('/')->with('flash', ['type' => 'success', 'message' => $name.' deleted']);
 		}
+		return abort(404);
 	}
 
 	// Ajax calls
@@ -82,7 +87,7 @@ class AddonController extends Controller {
 	private function save($addon) {
 		request()->validate([
 			'type' => ['required'],
-			'name' => ['required', 'string', 'max:24', 'unique:addons'],
+			'name' => ['required', 'string', 'max:24', Rule::unique('addons')->ignore(request()->id)],
 			'description' => ['required', 'string'],
 			'download' => ['required', 'string', new Url],
 			'images.*' => ['nullable', 'string', new Url],
@@ -96,7 +101,7 @@ class AddonController extends Controller {
 		$addon->description = request()->description;
 		$addon->download = request()->download;
 		$addon->images = request()->images;
-		$addon->contributors = (request()->contributors[0] !== null ? request()->contributors : []);
+		$addon->contributors = request()->contributors;
 		$addon->thumbnail = request()->thumbnail;
 		$addon->release = request()->release;
 		$addon->source = request()->source;

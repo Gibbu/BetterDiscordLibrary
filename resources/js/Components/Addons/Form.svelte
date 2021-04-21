@@ -17,7 +17,7 @@
     download: '',
     thumbnail: '',
     images: [''],
-    contributors: [''],
+    contributors: null,
     release: '',
     source: ''
   }
@@ -135,19 +135,21 @@
         </div>
         <div class="mb-4">
           <p class="text-sm mb-1">Contributors</p>
+          <div class="flex mb-1">
+            <input type="text" class="input w-full mr-2" bind:value={data.contributors[0]} placeholder="GitHub username">
+            <button type="button" class="btn text-teal-500 hover:bg-teal-500 hover:bg-opacity-5 focus:bg-teal-500 focus:bg-opacity-10" on:click={() => addRow('contributors')}>
+              <Icon src={Plus} class="w-5 h-5" />
+            </button>
+          </div>
           {#each data.contributors as contributor, i}
-            <div class="flex mb-1">
-              <input type="text" class="input w-full mr-2" bind:value={contributor} placeholder="GitHub username">
-              {#if i === 0}
-                <button type="button" class="btn text-teal-500 hover:bg-teal-500 hover:bg-opacity-5 focus:bg-teal-500 focus:bg-opacity-10" on:click={() => addRow('contributors')}>
-                  <Icon src={Plus} class="w-5 h-5" />
-                </button>
-              {:else}
+            {#if i !== 0}
+              <div class="flex mb-1">
+                <input type="text" class="input w-full mr-2" bind:value={contributor} placeholder="GitHub username">
                 <button type="button" class="btn text-red-500 hover:bg-red-500 hover:bg-opacity-5 focus:bg-red-500 focus:bg-opacity-10" on:click={() => removeRow('contributors', i)}>
                   <Icon src={Trash} class="w-5 h-5" />
                 </button>
-              {/if}
-            </div>
+              </div>
+            {/if}
           {/each}
         </div>
         <div class="flex mb-4">

@@ -90,7 +90,7 @@
             {/if}
           </div>
         </section>
-        {#if addon.contributors.length > 0}
+        {#if addon.contributors[0] !== null}
           <section class="mb-6">
             <h3 class="text-gray-800 dark:text-gray-100 text-lg font-display mb-2">Contributors</h3>
             {#each addon.contributors as contributor}
