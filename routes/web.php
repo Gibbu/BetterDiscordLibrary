@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/test', function() {
-  flash('error', 'You need to be logged in to view that area');
-  return redirect('/');
-});
-
 Route::group(['middleware' => 'guest'], function() {
   Route::get('/login', [AuthController::class, 'login'])->name('login');
   Route::get('/login/callback', [AuthController::class, 'callback'])->name('login.callback');

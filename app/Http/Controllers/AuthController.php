@@ -15,8 +15,7 @@ class AuthController extends Controller {
 		$discordUser = Socialite::driver('discord')->user();
 
 		if (User::where('provider_id', $discordUser->getId())->whereNotNull('banned')->first()) {
-			flash('error', 'That account has been banned');
-			return redirect('/');
+			return redirect('/')->with('flash', ['type' => 'error', 'message' => 'That account has been banned']);
 		}
 
 		$user = User::updateOrCreate([
@@ -36,8 +35,7 @@ class AuthController extends Controller {
 		$user->links = request()->all();
 		$user->save();
 
-		flash('success', 'Settings updated');
-		return redirect()->back();
+		return redirect()->back()->with('flash', ['type' => 'success', 'message' => 'Settings updated']);
 	}
 	
 	public function logout() {
@@ -52,7 +50,6 @@ class AuthController extends Controller {
 
 		Auth::logout();
 
-		flash('success', 'Account deleted');
-		return redirect('/');
+		return redirect('/')->with('flash', ['type' => 'success', 'message' => 'Account deleted']);
 	}
 }

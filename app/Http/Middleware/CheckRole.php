@@ -19,8 +19,7 @@ class CheckRole
         if ($count > 0) {
             return $next($request);
         } else {
-            flash('error', 'Inefficient permissions');
-            return redirect('/');
+            return redirect('/')->with('flash', ['type' => 'error', 'message' => 'Inefficient permissions']);
         }
     }
 }

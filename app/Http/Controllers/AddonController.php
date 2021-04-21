@@ -26,8 +26,7 @@ class AddonController extends Controller {
 		$addon = new Addon();
 		$this->save($addon);
 
-		flash('success', 'Addon successfully added');
-		return redirect($addon->type.'s/'.$addon->name);
+		return redirect($addon->type.'s/'.$addon->name)->with('flash', ['type' => 'success', 'message' => 'Addon successfully added']);
 	}
 
 	public function show($type, $name) {
@@ -50,8 +49,7 @@ class AddonController extends Controller {
 			$addon = Addon::findOrFail(request()->id);
 			$this->save($addon);
 			
-			flash('success', $addon->name.' successfully updated');
-			return redirect()->back();
+			return redirect()->back()->with('flash', ['type' => 'success', 'message' => $addon->name.' successfully updated']);
 		}
 	}
 
@@ -60,8 +58,8 @@ class AddonController extends Controller {
 		if ($addon->user_id === Auth::id()) {
 			$addon->delete();
 
-			flash('success', $name.' deleted');
-			return redirect('/');
+			
+			return redirect('/')->with('flash', ['type' => 'success', 'message' => $name.' deleted']);
 		}
 	}
 

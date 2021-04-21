@@ -22,8 +22,7 @@ class AdminController extends Controller {
 		} else {
 			$user->roles()->detach(1);
 		}
-
-		flash('success', $user->name.'#'.$user->discrim.' updated');
-		return redirect()->back();
+		
+		return redirect()->back()->with('flash', ['type' => 'success', 'message' => $user->name.'#'.$user->discrim.' updated']);
 	}
 }
