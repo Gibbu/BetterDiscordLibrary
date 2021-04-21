@@ -18,10 +18,10 @@
   }
 
   let form = {
-    github: auth.links.github || '',
-    paypal: auth.links.paypal || '',
-    patreon: auth.links.patreon || '',
-    support: auth.links.support || ''
+    github: auth.links?.github || '',
+    paypal: auth.links?.paypal || '',
+    patreon: auth.links?.patreon || '',
+    support: auth.links?.support || ''
   };
 
   let submitting = false;

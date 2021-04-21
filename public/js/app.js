@@ -17233,6 +17233,8 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+  var _auth$links, _auth$links2, _auth$links3, _auth$links4;
+
   var auth = $$props.auth;
   var theme = localStorage.theme;
 
@@ -17243,10 +17245,10 @@ function instance($$self, $$props, $$invalidate) {
   };
 
   var form = {
-    github: auth.links.github || "",
-    paypal: auth.links.paypal || "",
-    patreon: auth.links.patreon || "",
-    support: auth.links.support || ""
+    github: ((_auth$links = auth.links) === null || _auth$links === void 0 ? void 0 : _auth$links.github) || "",
+    paypal: ((_auth$links2 = auth.links) === null || _auth$links2 === void 0 ? void 0 : _auth$links2.paypal) || "",
+    patreon: ((_auth$links3 = auth.links) === null || _auth$links3 === void 0 ? void 0 : _auth$links3.patreon) || "",
+    support: ((_auth$links4 = auth.links) === null || _auth$links4 === void 0 ? void 0 : _auth$links4.support) || ""
   };
   var submitting = false;
 
