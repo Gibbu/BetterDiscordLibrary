@@ -14383,7 +14383,7 @@ function create_default_slot_2(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(t);
     }
   };
-} // (83:12) {#if addon.user.links.paypal}
+} // (83:12) {#if addon.user.links?.paypal}
 
 
 function create_if_block_4(ctx) {
@@ -14439,7 +14439,7 @@ function create_if_block_4(ctx) {
       dispose();
     }
   };
-} // (87:12) {#if addon.user.links.patreon}
+} // (87:12) {#if addon.user.links?.patreon}
 
 
 function create_if_block_3(ctx) {
@@ -14640,7 +14640,7 @@ function create_each_block(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(a);
     }
   };
-} // (122:6) {#if addon.user.links.support}
+} // (122:6) {#if addon.user.links?.support}
 
 
 function create_if_block_1(ctx) {
@@ -14666,6 +14666,8 @@ function create_if_block_1(ctx) {
   });
   return {
     c: function c() {
+      var _ctx$2$user$links;
+
       div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("div");
       section = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("section");
       h3 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.element)("h3");
@@ -14679,7 +14681,7 @@ function create_if_block_1(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(h3, "class", "text-gray-800 dark:text-gray-100 text-lg font-display mb-2");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a, "href", a_href_value =
       /*addon*/
-      ctx[2].user.links.support);
+      (_ctx$2$user$links = ctx[2].user.links) === null || _ctx$2$user$links === void 0 ? void 0 : _ctx$2$user$links.support);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a, "class", "btn btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a, "target", "_blank");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div, "class", "rounded bg-gray-50 dark:bg-gray-800 p-4 mt-4");
@@ -14697,6 +14699,8 @@ function create_if_block_1(ctx) {
       current = true;
     },
     p: function p(ctx, dirty) {
+      var _ctx$2$user$links2;
+
       if ((!current || dirty &
       /*addon*/
       4) && t3_value !== (t3_value =
@@ -14707,7 +14711,7 @@ function create_if_block_1(ctx) {
       /*addon*/
       4 && a_href_value !== (a_href_value =
       /*addon*/
-      ctx[2].user.links.support)) {
+      (_ctx$2$user$links2 = ctx[2].user.links) === null || _ctx$2$user$links2 === void 0 ? void 0 : _ctx$2$user$links2.support)) {
         (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a, "href", a_href_value);
       }
     },
@@ -14821,6 +14825,8 @@ function create_if_block(ctx) {
 
 
 function create_default_slot_1(ctx) {
+  var _ctx$2$user$links3, _ctx$2$user$links4, _ctx$2$user$links5;
+
   var header;
   var div0;
   var h1;
@@ -14975,10 +14981,10 @@ function create_default_slot_1(ctx) {
   });
   var if_block1 =
   /*addon*/
-  ctx[2].user.links.paypal && create_if_block_4(ctx);
+  ((_ctx$2$user$links3 = ctx[2].user.links) === null || _ctx$2$user$links3 === void 0 ? void 0 : _ctx$2$user$links3.paypal) && create_if_block_4(ctx);
   var if_block2 =
   /*addon*/
-  ctx[2].user.links.patreon && create_if_block_3(ctx);
+  ((_ctx$2$user$links4 = ctx[2].user.links) === null || _ctx$2$user$links4 === void 0 ? void 0 : _ctx$2$user$links4.patreon) && create_if_block_3(ctx);
   var if_block3 =
   /*addon*/
   ctx[2].contributors.length > 0 && create_if_block_2(ctx);
@@ -15008,7 +15014,7 @@ function create_default_slot_1(ctx) {
   });
   var if_block4 =
   /*addon*/
-  ctx[2].user.links.support && create_if_block_1(ctx);
+  ((_ctx$2$user$links5 = ctx[2].user.links) === null || _ctx$2$user$links5 === void 0 ? void 0 : _ctx$2$user$links5.support) && create_if_block_1(ctx);
   var if_block5 = show_if && create_if_block(ctx);
   return {
     c: function c() {
@@ -15174,6 +15180,8 @@ function create_default_slot_1(ctx) {
       }
     },
     p: function p(ctx, dirty) {
+      var _ctx$2$user$links6, _ctx$2$user$links7, _ctx$2$user$links8;
+
       if ((!current || dirty &
       /*addon*/
       4) && t0_value !== (t0_value =
@@ -15266,7 +15274,7 @@ function create_default_slot_1(ctx) {
 
       if (
       /*addon*/
-      ctx[2].user.links.paypal) {
+      (_ctx$2$user$links6 = ctx[2].user.links) !== null && _ctx$2$user$links6 !== void 0 && _ctx$2$user$links6.paypal) {
         if (if_block1) {
           if_block1.p(ctx, dirty);
         } else {
@@ -15281,7 +15289,7 @@ function create_default_slot_1(ctx) {
 
       if (
       /*addon*/
-      ctx[2].user.links.patreon) {
+      (_ctx$2$user$links7 = ctx[2].user.links) !== null && _ctx$2$user$links7 !== void 0 && _ctx$2$user$links7.patreon) {
         if (if_block2) {
           if_block2.p(ctx, dirty);
         } else {
@@ -15332,7 +15340,7 @@ function create_default_slot_1(ctx) {
 
       if (
       /*addon*/
-      ctx[2].user.links.support) {
+      (_ctx$2$user$links8 = ctx[2].user.links) !== null && _ctx$2$user$links8 !== void 0 && _ctx$2$user$links8.support) {
         if (if_block4) {
           if_block4.p(ctx, dirty);
 
