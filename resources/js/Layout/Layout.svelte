@@ -4,7 +4,7 @@
   import Icon, {ChevronDown, Logout, User, Plus, Cog, DotsHorizontal, QuestionMarkCircle, Newspaper, Users} from 'svelte-hero-icons';
 
   // State
-  export let auth;
+  let {auth} = $page.props;
 
   // Components
   import Flash from './Flash.svelte';
