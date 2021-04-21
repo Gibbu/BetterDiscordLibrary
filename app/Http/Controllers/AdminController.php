@@ -22,6 +22,8 @@ class AdminController extends Controller {
 		} else {
 			$user->roles()->detach(1);
 		}
+		$user->banned = request()->banned;
+		$user->save();
 		
 		return redirect()->back()->with('flash', ['type' => 'success', 'message' => $user->name.'#'.$user->discrim.' updated']);
 	}
