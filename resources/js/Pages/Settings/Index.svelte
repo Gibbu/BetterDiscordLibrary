@@ -43,7 +43,7 @@
   }
 </script>
 
-<Layout title="Profile settings" width="max-w-screen-lg">
+<Layout title="Profile settings">
   <main class="my-12">
     <div class="mb-12">
       <h3 class="font-display mb-2">Appearance</h3>

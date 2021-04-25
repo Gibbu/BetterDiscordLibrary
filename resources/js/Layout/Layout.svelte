@@ -27,7 +27,6 @@
   import Form from '$components/Addons/Form.svelte';
 
   export let title = 'Home'
-  export let width = 'max-w-screen-xl';
 
   const icons = {ColorSwatch, Puzzle, QuestionMarkCircle, AcademicCap, Code}
   const nav = [
