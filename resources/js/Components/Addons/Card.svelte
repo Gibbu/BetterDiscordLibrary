@@ -40,7 +40,7 @@
         <InertiaLink href="/users/{addon.user.slug}" class="mr-2">
           <img src={addon.user.avatar} alt="User avatar" class="rounded-full w-8 h-8">
         </InertiaLink>
-        <InertiaLink href="/users/{addon.user.slug}">{addon.user.name}</InertiaLink>
+        <InertiaLink href="/users/{addon.user.slug}" class="truncate max-w-[200px]">{addon.user.name}</InertiaLink>
       </div>
     {/if}
     <div class="flex items-center">

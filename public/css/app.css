@@ -1638,6 +1638,12 @@ select {
 .max-w-screen-xl {
   max-width: 1280px;
 }
+.max-w-\[200px\] {
+  max-width: 200px;
+}
+.max-w-\[270px\] {
+  max-width: 270px;
+}
 .flex-1 {
   flex: 1 1 0%;
 }

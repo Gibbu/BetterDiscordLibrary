@@ -77,7 +77,7 @@
                 <InertiaLink href="/users/{addon.user.slug}" class="flex items-center overflow-auto">
                   <img src={addon.user.avatar} alt="Developer avatar" class="w-10 h-10 rounded-full">
                 </InertiaLink>
-                <InertiaLink href="/users/{addon.user.slug}" class="ml-3 text-lg hover:text-teal-500">
+                <InertiaLink href="/users/{addon.user.slug}" class="ml-3 text-lg hover:text-teal-500 truncate max-w-[270px]">
                   {addon.user.name}
                 </InertiaLink>
               </div>

@@ -7918,6 +7918,7 @@ function create_if_block(ctx) {
       href: "/users/" +
       /*addon*/
       ctx[0].user.slug,
+      "class": "truncate max-w-[200px]",
       $$slots: {
         "default": [create_default_slot]
       },
@@ -8025,7 +8026,7 @@ function create_default_slot_1(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(img);
     }
   };
-} // (43:8) <InertiaLink href="/users/{addon.user.slug}">
+} // (43:8) <InertiaLink href="/users/{addon.user.slug}" class="truncate max-w-[200px]">
 
 
 function create_default_slot(ctx) {
@@ -15141,7 +15142,7 @@ function create_default_slot_3(ctx) {
       if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.detach)(img);
     }
   };
-} // (80:16) <InertiaLink href="/users/{addon.user.slug}" class="ml-3 text-lg hover:text-teal-500">
+} // (80:16) <InertiaLink href="/users/{addon.user.slug}" class="ml-3 text-lg hover:text-teal-500 truncate max-w-[270px]">
 
 
 function create_default_slot_2(ctx) {
@@ -15753,7 +15754,7 @@ function create_default_slot_1(ctx) {
       href: "/users/" +
       /*addon*/
       ctx[2].user.slug,
-      "class": "ml-3 text-lg hover:text-teal-500",
+      "class": "ml-3 text-lg hover:text-teal-500 truncate max-w-[270px]",
       $$slots: {
         "default": [create_default_slot_2]
       },
