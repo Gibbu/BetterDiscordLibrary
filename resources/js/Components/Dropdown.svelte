@@ -27,7 +27,7 @@
   {#if visible}
     <div
       bind:this={menuSelector}
-      class="absolute top-full w-[200px] transform translate-y-3 rounded p-2 z-10 shadow-lg bg-white dark:bg-gray-700 {menu}"
+      class="absolute top-full w-[200px] transform border translate-y-3 rounded p-2 z-10 shadow-lg border-gray-300 bg-white dark:border-gray-800 dark:bg-gray-950 {menu}"
       use:clickOutside={trigger}
       on:clickedOutside={() => visible = false}
     >

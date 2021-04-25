@@ -17,6 +17,7 @@ Route::group(['prefix' => 'users'], function() {
   Route::get('/{name}/{discrim}', [UserController::class, 'show'])->name('users.show');
 });
 Route::get('/developers', [UserController::class, 'devs'])->name('users.devs');
+Route::get('/about', [HomeController::class, 'about']);
 
 
 

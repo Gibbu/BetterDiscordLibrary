@@ -17,6 +17,10 @@ html, body, #app {
 @tailwind utilities;
 
 @layer components {
+	.wrap {
+		@apply max-w-screen-xl mx-auto w-full;
+	}
+
   .btn {
     @apply flex text-sm items-center font-semibold transition rounded justify-center py-2.5 px-4 cursor-pointer focus:outline-none;
   }

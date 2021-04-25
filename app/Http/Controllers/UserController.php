@@ -10,9 +10,9 @@ class UserController extends Controller {
 		$user = User::where(['name' => $name, 'discrim' => $discrim])->firstOrFail();
 		$user->roles = $user->getRoles();
 
-		$likes = $user->likes()->with('addon')->get();
-		$themes = $user->addons()->where('type', 'theme')->get();
-		$plugins = $user->addons()->where('type', 'plugin')->get();
+		$likes = $user->likes()->with(['addon' => fn($q) => $q->withCount('likes')])->get();
+		$themes = $user->addons()->where('type', 'theme')->withCount('likes')->get();
+		$plugins = $user->addons()->where('type', 'plugin')->withCount('likes')->get();
 
 		return Inertia::render('Users/Show', compact('user', 'likes', 'themes', 'plugins'));
 	}

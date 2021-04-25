@@ -154,7 +154,12 @@
         </div>
         <div class="flex mb-4">
           <label class="block mr-4 flex-1">
-            <p class="text-sm mb-1">Release date <span class="text-red-500">*</span></p>
+            <div class="flex items-center justify-between">
+              <p class="text-sm mb-1">Release date <span class="text-red-500">*</span></p>
+              <span use:tooltip={{content: 'When the addon was posted the the official theme/plugin channels'}}>
+                <Icon src={InformationCircle} class="w-4 h-4" />
+              </span>
+            </div>
             <input type="date" class="input w-full {errors?.release ? '!border-red-500 hover:!border-red-400' : ''}" bind:value={data.release}>
             {#if errors?.release}
               <small class="text-red-500">{errors.release}</small>

@@ -24,7 +24,10 @@ module.exports = {
     },
     extend: {
       colors: {
-        teal: colours.teal
+        teal: colours.teal,
+        gray: {
+          '950': '#101623'
+        }
       },
       typography: (theme) => ({
         light: {

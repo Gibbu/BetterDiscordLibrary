@@ -13,7 +13,7 @@ class AddonController extends Controller {
 		if ($type == 'themes' || $type == 'plugins') {
 			$query = $this->getQuery();
 
-			$addons = Addon::where('type', rtrim($type, 's'))->with('user')->orderBy($query[0], $query[1])->get();
+			$addons = Addon::where('type', rtrim($type, 's'))->with('user')->withCount('likes')->orderBy($query[0], $query[1])->get();
 			return Inertia::render('Addons/Index', compact('addons', 'type'));
 		}
 		return abort(404);
@@ -115,7 +115,7 @@ class AddonController extends Controller {
 	private function getQuery() {
 		if (request()->query()) {
 			foreach (request()->query() as $query => $order) {
-				if (in_array($query, ['name', 'view_count', 'download_count'])) {
+				if (in_array($query, ['name', 'view_count', 'download_count', 'release'])) {
 					return [$query, $order];
 				}
 			}
