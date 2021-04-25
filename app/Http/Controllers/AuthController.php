@@ -25,7 +25,7 @@ class AuthController extends Controller {
 		} else {
 			$user = new User();
 			$user->provider_id = $discordUser->getId();
-			$user->name = $discordUser->name->getName();
+			$user->name = $discordUser->getName();
 			$user->avatar = $discordUser->getAvatar();
 			$user->slug = $discordUser->getName().$discordUser->user['discriminator'];
 		}
