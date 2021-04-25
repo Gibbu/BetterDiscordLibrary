@@ -107,17 +107,13 @@
           <small class="text-red-500">{errors.download}</small>
           {/if}
         </label>
-        <label class="block mb-4">
+        <div class="mb-4">
           <div class="flex items-center justify-between">
-            <p class="text-sm mb-1">Thumbnail</p>
-            <span use:tooltip={{content: 'This will used for the addon cards. If no thumbnail is available the first image will be used instead. Thumbnails are in a 16:9 aspect ratio.'}}>
+            <p class="text-sm mb-1">Images</p>
+            <span use:tooltip={{content: 'The first image will be used for the card thumbnail. Images are in a 16:9 aspect ratio.'}}>
               <Icon src={InformationCircle} class="w-4 h-4" />
             </span>
           </div>
-          <input type="text" class="input w-full mr-2 {errors?.thumbnail ? '!border-red-500 hover:!border-red-400' : ''}" bind:value={data.thumbnail} placeholder="Image URL...">
-        </label>
-        <div class="mb-4">
-          <p class="text-sm mb-1">Images</p>
           {#each data.images as img, i}
             <div class="flex mb-1">
               <input type="text" class="input w-full mr-2" bind:value={img} placeholder="Image URL...">

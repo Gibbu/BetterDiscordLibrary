@@ -102,7 +102,6 @@ class AddonController extends Controller {
 		$addon->download = request()->download;
 		$addon->images = request()->images;
 		$addon->contributors = request()->contributors;
-		$addon->thumbnail = request()->thumbnail;
 		$addon->release = request()->release;
 		$addon->source = request()->source;
 		if (!$editing) {
