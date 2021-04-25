@@ -18,21 +18,30 @@
   }
 
   let form = {
-    github: auth.links?.github || '',
-    paypal: auth.links?.paypal || '',
-    patreon: auth.links?.patreon || '',
-    support: auth.links?.support || ''
-  };
+    name: auth.name,
+    slug: auth.slug,
+    github: auth.links?.github || null,
+    paypal: auth.links?.paypal || null,
+    patreon: auth.links?.patreon || null,
+    support: auth.links?.support || null
+  }
 
   let submitting = false;
+  let errors;
   const submit = () => {
     Inertia.put('/user', form, {
       preserveScroll: true,
       onStart() {
         submitting = true;
       },
+      onError(err) {
+        errors = err;
+      },
       onFinish() {
         submitting = false;
+      },
+      onSuccess() {
+        errors = null;
       }
     })
   }
@@ -44,59 +53,81 @@
 </script>
 
 <Layout title="Profile settings">
-  <main class="my-12">
-    <div class="mb-12">
-      <h3 class="font-display mb-2">Appearance</h3>
-      <section class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden p-4">
-        <button
-          class="flex items-center mb-4 w-full py-4 px-5 rounded border-2 focus:outline-none {theme === 'light' ? 'text-white bg-teal-500 border-teal-500' : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
-          on:click={() => setTheme('light')}
-        >
-          <Icon src={Sun} class="w-5 h-5 mr-3" /> Light Theme
-        </button>
-        <button
-          class="flex items-center w-full py-4 px-5 rounded border-2 focus:outline-none {theme === 'dark' ? 'text-white bg-teal-500 border-teal-500' : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
-          on:click={() => setTheme('dark')}
-        >
-          <Icon src={Moon} class="w-5 h-5 mr-3" /> Dark Theme
-        </button>
-      </section>
-    </div>
-    {#if auth.roles.includes('dev')}
+  <div class="wrap">
+    <main class="my-12">
       <div class="mb-12">
-        <h3 class="font-display mb-2">Developer settings</h3>
-        <section class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden p-4 grid grid-cols-2 gap-4">
-          <label class="text-sm mb-1">
-            <p class="mb-2">GitHub username</p>
-            <input type="text" class="input input-secondary w-full" bind:value={form.github}>
-          </label>
-          <label class="text-sm mb-1">
-            <p class="mb-2">PayPal link</p>
-            <input type="text" class="input input-secondary w-full" bind:value={form.paypal}>
-          </label>
-          <label class="text-sm mb-1">
-            <p class="mb-2">Patreon link</p>
-            <input type="text" class="input input-secondary w-full" bind:value={form.patreon}>
-          </label>
-          <label class="text-sm mb-1">
-            <p class="mb-2">Discord server code</p>
-            <input type="text" class="input input-secondary w-full" placeholder="Example: ZHthyCw" bind:value={form.support}>
-          </label>
+        <h3 class="font-display mb-2">Account settings</h3>
+        <section class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden p-4">
+          <div class=" mb-4">
+            <p class="text-sm mb-2">Username</p>
+            <input type="text" class="input input-secondary w-full {errors?.name ? '!border-red-500 hover:!border-red-400' : ''}" bind:value={form.name}>
+            {#if errors?.name}
+              <small class="text-red-500">{errors.name}</small>
+            {/if}
+          </div>
+          <div>
+            <p class="text-sm">Slug</p>
+            <small class="block mb-2 text-gray-500 dark:text-gray-500">This is your unique identifier and is used when viewing your profile. (users/{form.slug})</small>
+            <input type="text" class="input input-secondary w-full {errors?.slug ? '!border-red-500 hover:!border-red-400' : ''}" bind:value={form.slug}>
+            {#if errors?.slug}
+              <small class="text-red-500">{errors.slug}</small>
+            {/if}
+          </div>
         </section>
       </div>
-    {/if}
-    <footer class="flex justify-between">
-      <button class="btn btn-primary bg-red-500 hover:bg-red-400 ring-red-500 ring-opacity-40 focus:bg-red-400" on:click={() => deleteModal = true}>
-        <Icon src={Trash} class="w-5 h-5 mr-2" /> Delete account
-      </button>
-      <button class="btn btn-primary bg-green-500 hover:bg-green-400 ring-green-500 ring-opacity-40 focus:bg-green-400" on:click={submit}>
-        {#if submitting}
-          <Spinner class="mr-2" />
-        {/if}
-        Save changes
-      </button>
-    </footer>
-  </main>
+      {#if auth.roles.includes('dev')}
+        <div class="mb-12">
+          <h3 class="font-display mb-2">Developer settings</h3>
+          <section class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden p-4 grid grid-cols-2 gap-4">
+            <label class="block">
+              <p class="mb-2 text-sm">GitHub username</p>
+              <input type="text" class="input input-secondary w-full" bind:value={form.github}>
+            </label>
+            <label class="block">
+              <p class="mb-2 text-sm">PayPal link</p>
+              <input type="text" class="input input-secondary w-full" bind:value={form.paypal}>
+            </label>
+            <label class="block">
+              <p class="mb-2 text-sm">Patreon link</p>
+              <input type="text" class="input input-secondary w-full" bind:value={form.patreon}>
+            </label>
+            <label class="block">
+              <p class="mb-2 text-sm">Discord server code</p>
+              <input type="text" class="input input-secondary w-full" placeholder="Example: ZHthyCw" bind:value={form.support}>
+            </label>
+          </section>
+        </div>
+      {/if}
+      <div class="mb-12">
+        <h3 class="font-display mb-2">Appearance</h3>
+        <section class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden p-4">
+          <button
+            class="flex items-center mb-4 w-full py-4 px-5 rounded border-2 focus:outline-none {theme === 'light' ? 'text-white bg-teal-500 border-teal-500' : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
+            on:click={() => setTheme('light')}
+          >
+            <Icon src={Sun} class="w-5 h-5 mr-3" /> Light Theme
+          </button>
+          <button
+            class="flex items-center w-full py-4 px-5 rounded border-2 focus:outline-none {theme === 'dark' ? 'text-white bg-teal-500 border-teal-500' : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
+            on:click={() => setTheme('dark')}
+          >
+            <Icon src={Moon} class="w-5 h-5 mr-3" /> Dark Theme
+          </button>
+        </section>
+      </div>
+      <footer class="flex justify-between">
+        <button class="btn btn-primary bg-red-500 hover:bg-red-400 ring-red-500 ring-opacity-40 focus:bg-red-400" on:click={() => deleteModal = true}>
+          <Icon src={Trash} class="w-5 h-5 mr-2" /> Delete account
+        </button>
+        <button class="btn btn-primary bg-green-500 hover:bg-green-400 ring-green-500 ring-opacity-40 focus:bg-green-400" on:click={submit}>
+          {#if submitting}
+            <Spinner class="mr-2" />
+          {/if}
+          Save changes
+        </button>
+      </footer>
+    </main>
+  </div>
 </Layout>
 
 <AreYouSure visible={deleteModal} title="Delete Account" on:close={() => deleteModal = false} on:confirm={destroy}>

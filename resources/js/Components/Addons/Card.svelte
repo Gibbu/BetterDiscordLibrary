@@ -37,10 +37,10 @@
   <footer class="flex items-center justify-between mt-2">
     {#if addon.user}
       <div class="flex items-center">
-        <InertiaLink href="/users/{addon.user.name}/{addon.user.discrim}" class="mr-2">
+        <InertiaLink href="/users/{addon.user.slug}" class="mr-2">
           <img src={addon.user.avatar} alt="User avatar" class="rounded-full w-8 h-8">
         </InertiaLink>
-        <InertiaLink href="/users/{addon.user.name}/{addon.user.discrim}">{addon.user.name}</InertiaLink>
+        <InertiaLink href="/users/{addon.user.slug}">{addon.user.name}</InertiaLink>
       </div>
     {/if}
     <div class="flex items-center">

@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->bigInteger('provider_id');
             $table->string('name');
             $table->text('avatar');
-            $table->integer('discrim');
+            $table->string('slug')->unique();
             $table->json('links')->nullable();
             $table->text('banned')->nullable();
             $table->rememberToken();

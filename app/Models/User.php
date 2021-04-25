@@ -14,7 +14,7 @@ class User extends Authenticatable
         'name',
         'provider_id',
         'avatar',
-        'discrim',
+        'slug',
         'links'
     ];
     protected $hidden = [
@@ -23,7 +23,6 @@ class User extends Authenticatable
     ];
     protected $casts = [
         'provider_id' => 'double',
-        'discrim' => 'integer',
         'links' => 'array'
     ];
 

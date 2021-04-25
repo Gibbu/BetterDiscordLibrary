@@ -19,16 +19,13 @@
   }
 </script>
 
-<Layout title="{user.name}#{user.discrim}">
+<Layout title="{user.slug}">
   <header class="bg-gray-50 dark:bg-gray-950 py-12 flex items-center border-b border-gray-300 dark:border-gray-800">
     <div class="wrap flex items-center justify-between">
       <div class="flex items-center">
         <img src={user.avatar} alt="User avatar" class="w-24 h-24 rounded-full mr-6">
         <div>
-          <h1 class="font-display flex items-center text-gray-800 dark:text-white text-3xl">
-            {user.name}
-            <span class="opacity-60">#{user.discrim}</span>
-          </h1>
+          <h1 class="font-display flex items-center text-gray-800 dark:text-white text-3xl">{user.name}</h1>
           {#if user.roles.length > 0}
             <div class="flex items-center mt-2">
               {#if user.roles.includes('dev')}

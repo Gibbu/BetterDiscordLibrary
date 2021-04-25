@@ -6,8 +6,8 @@ use App\Models\User;
 use Inertia\Inertia;
 
 class UserController extends Controller {
-	public function show($name, $discrim) {
-		$user = User::where(['name' => $name, 'discrim' => $discrim])->firstOrFail();
+	public function show($slug) {
+		$user = User::where('slug', $slug)->firstOrFail();
 		$user->roles = $user->getRoles();
 
 		$likes = $user->likes()->with(['addon' => fn($q) => $q->orderBy('name', 'asc')->withCount('likes')])->get();

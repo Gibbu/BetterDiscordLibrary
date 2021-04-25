@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'users'], function() {
-  Route::get('/{name}/{discrim}', [UserController::class, 'show'])->name('users.show');
+  Route::get('{slug}', [UserController::class, 'show'])->name('users.show');
 });
 Route::get('/developers', [UserController::class, 'devs'])->name('users.devs');
 Route::get('/about', [HomeController::class, 'about']);

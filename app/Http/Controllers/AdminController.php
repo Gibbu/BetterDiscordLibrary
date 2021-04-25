@@ -8,7 +8,11 @@ use Inertia\Inertia;
 
 class AdminController extends Controller {
 	public function users() {
-		$users = User::where('name', 'like', '%'.request()->query('search').'%')->with('roles')->limit(10)->get();
+		$users = User::where('name', 'like', '%'.request()->query('search').'%')
+			->orWhere('slug', 'like', '%'.request()->query('search').'%')
+			->with('roles')
+			->limit(10)
+			->get();
 		$query = request()->query('search');
 
 		return Inertia::render('Admin/Users', compact('users', 'query'));

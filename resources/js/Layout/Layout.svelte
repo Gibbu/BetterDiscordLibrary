@@ -93,7 +93,7 @@
           <Icon src={ChevronDown} class="h-3 w-3" />
 
           <svelte:fragment slot="menu">
-            <InertiaLink href="/users/{auth.name}/{auth.discrim}" class="menu-item">
+            <InertiaLink href="/users/{auth.slug}" class="menu-item">
               My profile <Icon src={User} class="w-5 h-5" />
             </InertiaLink>
             <InertiaLink href="/settings" class="menu-item">

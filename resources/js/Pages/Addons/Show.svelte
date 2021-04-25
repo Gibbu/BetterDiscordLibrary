@@ -74,10 +74,10 @@
             <h3 class="text-gray-800 dark:text-gray-100 text-lg font-display mb-2">Developer</h3>
             <div class="flex items-center rounded-full overflow-auto group">
               <div class="flex items-center flex-1">
-                <InertiaLink href="/users/{addon.user.name}/{addon.user.discrim}" class="flex items-center overflow-auto">
+                <InertiaLink href="/users/{addon.user.slug}" class="flex items-center overflow-auto">
                   <img src={addon.user.avatar} alt="Developer avatar" class="w-10 h-10 rounded-full">
                 </InertiaLink>
-                <InertiaLink href="/users/{addon.user.name}/{addon.user.discrim}" class="ml-3 text-lg hover:text-teal-500">
+                <InertiaLink href="/users/{addon.user.slug}" class="ml-3 text-lg hover:text-teal-500">
                   {addon.user.name}
                 </InertiaLink>
               </div>

@@ -54,13 +54,13 @@
     <header class="grid grid-cols-[48px,1fr,1fr] gap-4 p-4 items-center border-b border-gray-200 dark:border-gray-700">
       <span></span>
       <span class="text-xs text-gray-500 dark:text-gray-400">Username</span>
-      <span class="text-xs text-gray-500 dark:text-gray-400">Discrim</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400">Slug</span>
     </header>
     {#each users as user}
       <button class="grid grid-cols-[48px,1fr,1fr] gap-4 p-4 w-full text-left items-center border-b border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 last:border-0 focus:outline-none" on:click={() => openUser(user)}>
         <img src={user.avatar} alt="User avatar" class="w-12 h-12 rounded-full">
         <span>{user.name}</span>
-        <span>{user.discrim}</span>
+        <span>{user.slug}</span>
       </button>
     {/each}
   </div>
@@ -76,7 +76,7 @@
       out:fly={{y: -15, duration: 200}}
     >
       <header class="p-4">
-        <h3 class="text-lg text-gray-800 dark:text-gray-100 font-display">Editing {selectedUser.name}#{selectedUser.discrim}</h3>
+        <h3 class="text-lg text-gray-800 dark:text-gray-100 font-display">Editing {selectedUser.slug}</h3>
       </header>
       <div class="px-4 max-h-[65vh] overflow-auto">
         <label class="block mb-4">
