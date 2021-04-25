@@ -1456,13 +1456,13 @@ select {
   margin-left: auto;
   margin-right: auto;
 }
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-}
 .my-6 {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
+}
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .mt-12 {
   margin-top: 3rem;
@@ -1584,17 +1584,11 @@ select {
 .h-24 {
   height: 6rem;
 }
-.max-h-\[80px\] {
-  max-height: 80px;
-}
-.max-h-\[65vh\] {
-  max-height: 65vh;
-}
 .max-h-\[90px\] {
   max-height: 90px;
 }
-.min-h-\[80px\] {
-  min-height: 80px;
+.max-h-\[65vh\] {
+  max-height: 65vh;
 }
 .min-h-\[90px\] {
   min-height: 90px;
@@ -1643,9 +1637,6 @@ select {
 }
 .max-w-screen-xl {
   max-width: 1280px;
-}
-.max-w-screen-lg {
-  max-width: 1024px;
 }
 .flex-1 {
   flex: 1 1 0%;
@@ -1816,6 +1807,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
 }
+.bg-gray-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(209, 213, 219, var(--tw-bg-opacity));
+}
 .bg-pink-500 {
   --tw-bg-opacity: 1;
   background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
@@ -1839,6 +1834,10 @@ select {
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
+}
+.object-contain {
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 .p-2 {
   padding: 0.5rem;
@@ -1874,9 +1873,6 @@ select {
 }
 .pb-4 {
   padding-bottom: 1rem;
-}
-.pb-12 {
-  padding-bottom: 3rem;
 }
 .pl-12 {
   padding-left: 3rem;
@@ -1962,17 +1958,17 @@ select {
   --tw-text-opacity: 1;
   color: rgba(107, 114, 128, var(--tw-text-opacity));
 }
-.text-teal-500 {
+.text-teal-600 {
   --tw-text-opacity: 1;
-  color: rgba(20, 184, 166, var(--tw-text-opacity));
+  color: rgba(13, 148, 136, var(--tw-text-opacity));
 }
 .text-gray-400 {
   --tw-text-opacity: 1;
   color: rgba(156, 163, 175, var(--tw-text-opacity));
 }
-.text-teal-600 {
+.text-teal-500 {
   --tw-text-opacity: 1;
-  color: rgba(13, 148, 136, var(--tw-text-opacity));
+  color: rgba(20, 184, 166, var(--tw-text-opacity));
 }
 .opacity-40 {
   opacity: 0.4;
@@ -2415,11 +2411,6 @@ pre[class*="language-"] {
 .dark .dark\:border-gray-800 {
   --tw-border-opacity: 1;
   border-color: rgba(31, 41, 55, var(--tw-border-opacity));
-}
-
-.dark .dark\:border-gray-600 {
-  --tw-border-opacity: 1;
-  border-color: rgba(75, 85, 99, var(--tw-border-opacity));
 }
 
 .dark .dark\:border-gray-700 {

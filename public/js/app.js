@@ -10507,12 +10507,12 @@ function create_each_block(ctx) {
       /*src*/
       ctx[3])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "src", img_src_value);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "alt", "Preview thumbnail");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "class", img_class_value = "pointer-events-none select-none " + (
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "class", img_class_value = "object-contain pointer-events-none select-none " + (
       /*selected*/
       ctx[1] ===
       /*i*/
       ctx[5] ? "opacity-40" : ""));
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(button, "class", button_class_value = "flex items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden cursor-pointer focus:outline-none " + (
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(button, "class", button_class_value = "bg-gray-300 dark:bg-gray-950 flex items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden cursor-pointer focus:outline-none " + (
       /*selected*/
       ctx[1] ===
       /*i*/
@@ -10541,7 +10541,7 @@ function create_each_block(ctx) {
 
       if (dirty &
       /*selected*/
-      2 && img_class_value !== (img_class_value = "pointer-events-none select-none " + (
+      2 && img_class_value !== (img_class_value = "object-contain pointer-events-none select-none " + (
       /*selected*/
       ctx[1] ===
       /*i*/
@@ -10551,7 +10551,7 @@ function create_each_block(ctx) {
 
       if (dirty &
       /*selected*/
-      2 && button_class_value !== (button_class_value = "flex items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden cursor-pointer focus:outline-none " + (
+      2 && button_class_value !== (button_class_value = "bg-gray-300 dark:bg-gray-950 flex items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden cursor-pointer focus:outline-none " + (
       /*selected*/
       ctx[1] ===
       /*i*/
@@ -10598,8 +10598,8 @@ function create_fragment(ctx) {
       /*selected*/
       ctx[1]])) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "src", img_src_value);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "alt", "Selected preview");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "class", "object-cover");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "flex w-full items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(img, "class", "object-contain");
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div0, "class", "flex w-full items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden bg-gray-300 dark:bg-gray-950");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(a, "href", a_href_value =
       /*images*/
       ctx[0][
