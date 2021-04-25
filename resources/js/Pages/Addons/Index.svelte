@@ -50,9 +50,6 @@
           <button class="menu-item" on:click={() => filter('download_count')}>
             Downloads <Icon src={Download} class="w-5 h-5" />
           </button>
-          <button class="menu-item" on:click={() => filter('like_count')}>
-            Likes <Icon src={Heart} class="w-5 h-5" />
-          </button>
           <button class="menu-item" on:click={() => filter('release')}>
             Release date <Icon src={Clock} class="w-5 h-5" />
           </button>

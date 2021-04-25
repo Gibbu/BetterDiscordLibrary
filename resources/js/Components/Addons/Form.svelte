@@ -17,7 +17,7 @@
     download: '',
     thumbnail: '',
     images: [''],
-    contributors: null,
+    contributors: [''],
     release: '',
     source: ''
   }

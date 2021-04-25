@@ -1,0 +1,6 @@
+{
+  "Not Found": "Sorry, the page you are looking for could not be found.",
+  "Service Unavailable": "Sorry, we are doing some maintenance. Please check back soon.",
+  "Server Error": "Whoops, something went wrong on our servers.",
+  "Forbidden": "Sorry, you are forbidden from accessing this page."
+}

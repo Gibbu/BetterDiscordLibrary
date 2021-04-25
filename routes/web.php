@@ -10,17 +10,23 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
+// Global routes
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::group(['middleware' => 'guest'], function() {
-  Route::get('/login', [AuthController::class, 'login'])->name('login');
-  Route::get('/login/callback', [AuthController::class, 'callback'])->name('login.callback');
-});
 
 Route::group(['prefix' => 'users'], function() {
   Route::get('/{name}/{discrim}', [UserController::class, 'show'])->name('users.show');
 });
 Route::get('/developers', [UserController::class, 'devs'])->name('users.devs');
+
+
+
+// Guest routes
+Route::group(['middleware' => 'guest'], function() {
+  Route::get('/login', [AuthController::class, 'login'])->name('login');
+  Route::get('/login/callback', [AuthController::class, 'callback'])->name('login.callback');
+});
+
+
 
 // Logged in user routes
 Route::group(['middleware' => 'auth'], function() {
@@ -46,11 +52,19 @@ Route::group(['middleware' => 'auth'], function() {
   Route::delete('/user', [AuthController::class, 'destroy'])->name('user.destroy');
 });
 
+
+
 // Admin routes
 Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function() {
-  Route::get('/', [AdminController::class, 'index']);
-  Route::put('user', [AdminController::class, 'update']);
+  Route::redirect('/', '/admin/users');
+
+  Route::get('/users', [AdminController::class, 'users']);
+  Route::put('/user', [AdminController::class, 'update']);
+
+  Route::get('/addons', [AdminController::class, 'addons']);
 });
+
+
 
 // Addon routes
 Route::put('/like/{id}', [LikeController::class, 'like'])->middleware('auth');

@@ -6,10 +6,10 @@ html, body, #app {
   flex-direction: column;
 }
 #page {
-  flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 #footer {
-  flex-shrink: 0;
+	flex-shrink: 0;
 }
 
 @tailwind base;

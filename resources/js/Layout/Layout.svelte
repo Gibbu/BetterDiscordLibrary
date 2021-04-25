@@ -1,7 +1,8 @@
 <script>
   import {onMount} from 'svelte';
+  import tooltip from '$lib/tooltip';
   import {InertiaLink, page} from '@inertiajs/inertia-svelte';
-  import Icon, {ChevronDown, Logout, User, Plus, Cog, DotsHorizontal, QuestionMarkCircle, Newspaper, Users} from 'svelte-hero-icons';
+  import Icon, {ChevronDown, Logout, User, Plus, Cog, DotsHorizontal, QuestionMarkCircle, Newspaper, Users, Mail} from 'svelte-hero-icons';
 
   // State
   let {auth} = $page.props;
@@ -28,19 +29,6 @@
 
   let formVisible = false;
 
-  const form = {
-    id: null,
-    type: 'theme',
-    name: 'Slate',
-    description: `An optimized, consistent, and functional theme for Discord based on GitHub's design language.`,
-    download: 'https://betterdiscord.net/ghdl?id=3358',
-    thumbnail: '',
-    contributors: ['Tropix126'],
-    images: ['https://i.imgur.com/GEcQZhN.png'],
-    release: '2020-08-06',
-    source: 'https://github.com/DiscordStyles/Slate'
-  }
-
   onMount(() => {
     document.querySelector('#app').removeAttribute('data-page');
   })
@@ -64,18 +52,6 @@
             </InertiaLink>
           </li>
         {/each}
-        <Dropdown btn="w-8 h-8 flex rounded hover:bg-gray-200 dark:hover:bg-gray-700 focus:outline-none" menu="left-0" container="ml-8">
-          <Icon src={DotsHorizontal} class="w-4 h-4 m-auto" />
-
-          <div slot="menu">
-            <InertiaLink href="/about" class="menu-item">
-              About <Icon src={QuestionMarkCircle} class="w-5 h-5" />
-            </InertiaLink>
-            <InertiaLink href="/about" class="menu-item">
-              Changelog <Icon src={Newspaper} class="w-5 h-5" />
-            </InertiaLink>
-          </div>
-        </Dropdown>
       </ul>
     </div>
     <div class="flex items-center">
@@ -125,12 +101,13 @@
 
 <Flash />
 
-<footer id="footer" class="py-4">
-  <div class="{width} mx-auto">
-    <p>Wow</p>
-  </div>
+<footer id="footer" class="mt-24 flex items-center justify-between {width} w-full mx-auto py-4 text-gray-400 dark:text-gray-500">
+  <p class="text-xs">BetterDiscordLibrary is <u>NOT</u> associated with BetterDiscord.</p>
+  <a href="mailto:betterdiscordlibrary@gmail.com" use:tooltip={{content: 'Contact', delay: [250, 0]}}>
+    <Icon src={Mail} class="w-4 h-4" />
+  </a>
 </footer>
 
 {#if auth && auth.roles.includes('dev')}
-  <Form data={form} visible={formVisible} on:close={() => formVisible = false} />
+  <Form visible={formVisible} on:close={() => formVisible = false} />
 {/if}

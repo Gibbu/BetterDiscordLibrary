@@ -44,12 +44,12 @@ class AddonController extends Controller {
 			return Inertia::render('Addons/Show', compact('addon', 'isLiked'));
 		}
 	}
-	
+
 	public function update($type, $name) {
 		if ($type == 'themes' || $type == 'plugins') {
 			$addon = Addon::where(['type' => rtrim($type, 's'), 'name' => $name])->with('user')->firstOrFail();
-			if (Auth::id() == $addon->user->id) {
-				$this->save($addon);
+			if (Auth::id() == $addon->user->id || in_array('admin', Auth::user()->getRoles())) {
+				$this->save($addon, true);
 
 				return redirect()->back()->with('flash', ['type' => 'success', 'message' => $addon->name.' successfully updated']);
 			}
@@ -84,7 +84,7 @@ class AddonController extends Controller {
 
 
 	// Private functions
-	private function save($addon) {
+	private function save($addon, $editing = false) {
 		request()->validate([
 			'type' => ['required'],
 			'name' => ['required', 'string', 'max:24', Rule::unique('addons')->ignore(request()->id)],
@@ -105,7 +105,9 @@ class AddonController extends Controller {
 		$addon->thumbnail = request()->thumbnail;
 		$addon->release = request()->release;
 		$addon->source = request()->source;
-		$addon->user_id = Auth::id();
+		if (!$editing) {
+			$addon->user_id = Auth::id();
+		}
 
 		$addon->save();
 	}
@@ -113,7 +115,7 @@ class AddonController extends Controller {
 	private function getQuery() {
 		if (request()->query()) {
 			foreach (request()->query() as $query => $order) {
-				if (in_array($query, ['name', 'view_count', 'download_count', 'like_count'])) {
+				if (in_array($query, ['name', 'view_count', 'download_count'])) {
 					return [$query, $order];
 				}
 			}

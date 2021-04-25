@@ -5,8 +5,11 @@
 </script>
 
 <div class="relative">
-  <div class="flex items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden">
-    <img src={images[selected]} alt="Selected preview">
+  <div class="flex flex-col items-end">
+    <div class="flex w-full items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden">
+      <img src={images[selected]} alt="Selected preview">
+    </div>
+    <a href={images[selected]} target="_blank" class="text-xs text-gray-500 dark:text-gray-400">View original</a>
   </div>
   {#if images.length > 1}
     <div class="grid grid-cols-6 gap-2 mt-2">

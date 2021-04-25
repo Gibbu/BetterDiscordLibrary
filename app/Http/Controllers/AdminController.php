@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addon;
 use App\Models\User;
 use Inertia\Inertia;
 
 class AdminController extends Controller {
-	public function index() {
+	public function users() {
 		$users = User::where('name', 'like', '%'.request()->query('search').'%')->with('roles')->limit(10)->get();
 		$query = request()->query('search');
 
-		return Inertia::render('Admin/Index', compact('users', 'query'));
+		return Inertia::render('Admin/Users', compact('users', 'query'));
+	}
+	public function addons() {
+		$addons = Addon::where('name', 'like', '%'.request()->query('search').'%')->with('user')->limit(10)->get();
+		$query = request()->query('search');
+
+		return Inertia::render('Admin/Addons', compact('addons', 'query'));
 	}
 
 	public function update() {
