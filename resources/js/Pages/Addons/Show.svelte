@@ -3,8 +3,7 @@
   import tooltip from '$lib/tooltip';
   import {Inertia} from '@inertiajs/inertia';
   import {InertiaLink} from '@inertiajs/inertia-svelte';
-  import Icon, {Download, Heart, Pencil, Eye, Clock, Trash, QuestionMarkCircle} from 'svelte-hero-icons';
-  import HRN from 'human-readable-numbers';
+  import Icon, {Download, Heart, Pencil, Eye, Clock, Code, Trash, QuestionMarkCircle} from 'svelte-hero-icons';
   import dayjs from 'dayjs';
 
   import Layout from '$layout/Layout.svelte';
@@ -39,6 +38,8 @@
   const destroy = () => {
     Inertia.delete(`/${addon.type}s/${addon.name}`);
   }
+
+  const formatNumber = number => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 </script>
 
 <Layout title={addon.name}>
@@ -107,16 +108,19 @@
           <section>
             <h3 class="text-gray-800 dark:text-gray-100 text-lg font-display mb-2">About</h3>
             <div class="flex items-center mb-1">
-              <Icon src={Eye} class="w-5 h-5 mr-2" /> Views: {HRN.toHumanString(addon.view_count)}
+              <Icon src={Eye} class="w-5 h-5 mr-2" /> Views: {formatNumber(addon.view_count)}
             </div>
             <div class="flex items-center mb-1">
-              <Icon src={Download} class="w-5 h-5 mr-2" /> Downloads: {HRN.toHumanString(addon.download_count)}
+              <Icon src={Download} class="w-5 h-5 mr-2" /> Downloads: {formatNumber(addon.download_count)}
             </div>
             <div class="flex items-center mb-1">
-              <Icon src={Heart} class="w-5 h-5 mr-2" /> Likes: {HRN.toHumanString(addon.likes_count)}
+              <Icon src={Heart} class="w-5 h-5 mr-2" /> Likes: {formatNumber(addon.likes_count)}
+            </div>
+            <div class="flex items-center mb-1">
+              <Icon src={Clock} class="w-5 h-5 mr-2" /> Release date: {dayjs(addon.release).format('D/M/YYYY')}
             </div>
             <div class="flex items-center">
-              <Icon src={Clock} class="w-5 h-5 mr-2" /> Release date: {dayjs(addon.release).format('D/M/YYYY')}
+              <Icon src={Code} class="w-5 h-5 mr-2" /> Source code: <a href={addon.source} target="_blank" class="underline truncate ml-2 text-teal-600 dark:text-teal-500 max-w-[190px]" title={addon.source}>{addon.source}</a>
             </div>
           </section>
         </div>

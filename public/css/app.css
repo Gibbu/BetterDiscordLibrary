@@ -1644,6 +1644,15 @@ select {
 .max-w-\[270px\] {
   max-width: 270px;
 }
+.max-w-\[190px\] {
+  max-width: 190px;
+}
+.max-w-\[150px\] {
+  max-width: 150px;
+}
+.max-w-\[165px\] {
+  max-width: 165px;
+}
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -1975,6 +1984,9 @@ select {
 .text-teal-500 {
   --tw-text-opacity: 1;
   color: rgba(20, 184, 166, var(--tw-text-opacity));
+}
+.underline {
+  text-decoration: underline;
 }
 .opacity-40 {
   opacity: 0.4;

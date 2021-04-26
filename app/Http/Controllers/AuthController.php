@@ -29,6 +29,7 @@ class AuthController extends Controller {
 			$user->avatar = $discordUser->getAvatar();
 			$user->slug = $discordUser->getName().$discordUser->user['discriminator'];
 		}
+		$user->save();
 
 		Auth::login($user, true);
 		return redirect('/');

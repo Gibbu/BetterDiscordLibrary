@@ -33,16 +33,16 @@
     {
       title: 'Menu',
       links: [
-        {value: 'Themes', href: '/themes', icon: 'ColorSwatch'},
-        {value: 'Plugins', href: '/plugins', icon: 'Puzzle'},
-        {value: 'Devs', href: '/developers', icon: 'Code'}
+        {el: 'inertia', value: 'Themes', href: '/themes', icon: 'ColorSwatch'},
+        {el: 'inertia', value: 'Plugins', href: '/plugins', icon: 'Puzzle'},
+        {el: 'inertia', value: 'Devs', href: '/developers', icon: 'Code'}
       ]
     },
     {
       title: 'Resources',
       links: [
-        {value: 'Guide', href: 'http://bd.zerebos.com', icon: 'AcademicCap'},
-        {value: 'About / FAQs', href: '/about', icon: 'QuestionMarkCircle'}
+        {el: 'a', value: 'Guide', href: 'http://bd.zerebos.com', icon: 'AcademicCap'},
+        {el: 'inertia', value: 'About / FAQs', href: '/about', icon: 'QuestionMarkCircle'}
       ]
     }
   ]
@@ -69,13 +69,19 @@
     <InertiaLink href="/">BDLibrary</InertiaLink>
   </h1>
   {#each nav as {title, links}}
-    <h5 class="mb-4 text-xs font-display font-bold uppercase text-gray-500 dark:text-gray-400">{title}</h5>
+    <h5 class="mb-6 text-xs font-display font-bold uppercase text-gray-500 dark:text-gray-400">{title}</h5>
     <ul class="mb-6 pb-6 border-b border-gray-300 dark:border-gray-800 last:border-0 last:pb-0">
-      {#each links as {href, value, icon}}
+      {#each links as {el, href, value, icon}}
         <li class="mb-8 last:mb-0">
-          <InertiaLink {href} class="flex items-center w-full {active(href) ? 'text-teal-600 dark:text-teal-500' : 'hover:text-black dark:hover:text-white'}">
-            <Icon src={icons[icon]} class="w-6 h-6 mr-4" /> {value}
-          </InertiaLink>
+          {#if el === 'inertia'}
+            <InertiaLink {href} class="flex items-center w-full {active(href) ? 'text-teal-600 dark:text-teal-500' : 'hover:text-black dark:hover:text-white'}">
+              <Icon src={icons[icon]} class="w-6 h-6 mr-4" /> {value}
+            </InertiaLink>
+          {:else if el === 'a'}
+            <a {href} target="_blank" class="flex items-center w-full hover:text-black dark:hover:text-white">
+              <Icon src={icons[icon]} class="w-6 h-6 mr-4" /> {value}
+            </a>
+          {/if}
         </li>
       {/each}
     </ul>

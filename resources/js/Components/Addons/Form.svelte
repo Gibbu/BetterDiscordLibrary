@@ -108,12 +108,12 @@
           {/if}
         </label>
         <div class="mb-4">
-          <div class="flex items-center justify-between">
-            <p class="text-sm mb-1">Images</p>
-            <span use:tooltip={{content: 'The first image will be used for the card thumbnail. Images are in a 16:9 aspect ratio.'}}>
+          <p class="text-sm mb-1 flex items-center">
+            Images
+            <span class="ml-2" use:tooltip={{content: 'The first image will be used for the card thumbnail. Images are in a 16:9 aspect ratio.'}}>
               <Icon src={InformationCircle} class="w-4 h-4" />
             </span>
-          </div>
+          </p>
           {#each data.images as img, i}
             <div class="flex mb-1">
               <input type="text" class="input w-full mr-2" bind:value={img} placeholder="Image URL...">
