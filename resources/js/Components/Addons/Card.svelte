@@ -19,7 +19,7 @@
 <div>
   <header class="block relative bg-gray-50 dark:bg-gray-800 rounded overflow-hidden">
     <InertiaLink href="/{addon.type}s/{addon.name}" class="block aspect-w-16 aspect-h-9">
-      <img src={addon.images[0]} loading="lazy" alt="Addon preview" class="object-cover w-full">
+      <img src={addon.images[0] || '/images/notFound.png'} loading="lazy" alt="Addon preview" class="object-cover w-full">
     </InertiaLink>
     <div class="absolute bottom-0 w-full p-4 flex items-center justify-between bg-gradient-to-b from-transparent to-black pointer-events-none">
       <h2 class="font-display text-white text-xl">{addon.name}</h2>
@@ -40,7 +40,7 @@
         <InertiaLink href="/users/{addon.user.slug}" class="mr-2">
           <img src={addon.user.avatar} alt="User avatar" class="rounded-full w-8 h-8">
         </InertiaLink>
-        <InertiaLink href="/users/{addon.user.slug}" class="truncate max-w-[165px]">{addon.user.name}</InertiaLink>
+        <InertiaLink href="/users/{addon.user.slug}" class="lg:truncate lg:max-w-[135px]">{addon.user.name}</InertiaLink>
       </div>
     {/if}
     <div class="flex items-center">

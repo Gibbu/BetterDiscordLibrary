@@ -7,7 +7,7 @@
 <div class="relative">
   <div class="flex flex-col items-end">
     <div class="flex w-full items-center justify-center aspect-w-16 aspect-h-9 rounded overflow-hidden bg-gray-300 dark:bg-gray-950">
-      <img src={images[selected]} alt="Selected preview" class="object-contain">
+      <img src={images[selected] || '/images/notFound.png'} alt="Selected preview" class="object-contain">
     </div>
     <a href={images[selected]} target="_blank" class="text-xs text-gray-500 dark:text-gray-400">View original</a>
   </div>

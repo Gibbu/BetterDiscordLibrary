@@ -14,7 +14,7 @@
     </div>
   </header>
   <div class="wrap">
-    <div class="grid grid-cols-6 gap-4 mt-12 mb-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-4 mt-12 mb-24">
       {#each devs as dev}
         <InertiaLink href="/users/{dev.slug}" class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden transform transition hover:-translate-y-2 hover:shadow-xl">
           <img src={dev.avatar} alt="Developer avatar" class="w-full">

@@ -12,7 +12,7 @@
   export let plugins;
   export let likes;
 
-  $: active = (window.location.hash ? window.location.hash.replace('#','') : (user.roles.includes('dev') ? 'themes' : 'likes'));
+  $: active = (window.location.hash ? window.location.hash.replace('#','') : (user.roles.includes('dev') ? (themes.length > 0 ? 'themes' : 'plugins') : 'likes'));
   const setActive = page => {
     window.location.hash = page;
     active = page;
@@ -43,20 +43,22 @@
         </div>
       </div>
       <div class="flex">
-        <button
-          class="btn mr-2 {active === 'themes' ? 'btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40' : 'btn-secondary'}"
-          on:click={() => setActive('themes')}
-        >
-          Themes
-          <span class="ml-1 {active === 'themes' ? '' : 'opacity-60'}">({themes.length})</span>
-        </button>
-        <button
-          class="btn mr-2 {active === 'plugins' ? 'btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40' : 'btn-secondary'}"
-          on:click={() => setActive('plugins')}
-        >
-          Plugins
-          <span class="ml-1 {active === 'plugins' ? '' : 'opacity-60'}">({plugins.length})</span>
-        </button>
+        {#if user.roles.includes('dev')}
+          <button
+            class="btn mr-2 {active === 'themes' ? 'btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40' : 'btn-secondary'}"
+            on:click={() => setActive('themes')}
+          >
+            Themes
+            <span class="ml-1 {active === 'themes' ? '' : 'opacity-60'}">({themes.length})</span>
+          </button>
+          <button
+            class="btn mr-2 {active === 'plugins' ? 'btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40' : 'btn-secondary'}"
+            on:click={() => setActive('plugins')}
+          >
+            Plugins
+            <span class="ml-1 {active === 'plugins' ? '' : 'opacity-60'}">({plugins.length})</span>
+          </button>
+        {/if}
         <button
           class="btn {active === 'likes' ? 'btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40' : 'btn-secondary'}"
           on:click={() => setActive('likes')}

@@ -18,7 +18,7 @@ html, body, #app {
 
 @layer components {
 	.wrap {
-		@apply max-w-screen-xl mx-auto w-full;
+		@apply max-w-screen-xl mx-auto w-full px-4;
 	}
 
   .btn {

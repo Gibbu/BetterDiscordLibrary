@@ -9,7 +9,6 @@
     User,
     Plus,
     Cog,
-    DotsHorizontal,
     ColorSwatch,
     Puzzle,
     QuestionMarkCircle,
@@ -24,6 +23,7 @@
 
   // Components
   import Flash from './Flash.svelte';
+  import Settings from './SettingsModal.svelte';
   import Dropdown from '$components/Dropdown.svelte';
   import Form from '$components/Addons/Form.svelte';
   import Markdown from '$components/Markdown.svelte';
@@ -43,8 +43,7 @@
     {
       title: 'Resources',
       links: [
-        {el: 'a', value: 'Guide', href: 'http://bd.zerebos.com', icon: 'AcademicCap'},
-        {el: 'inertia', value: 'About / FAQs', href: '/about', icon: 'QuestionMarkCircle'}
+        {el: 'a', value: 'Guide', href: 'http://bd.zerebos.com', icon: 'AcademicCap'}
       ]
     }
   ]
@@ -65,6 +64,8 @@
     localStorage.setItem(`announcement_${announcement.id}`, 'true');
     announcement = null;
   }
+
+  let settingsModal = false;
 </script>
 
 <svelte:head>
@@ -99,42 +100,51 @@
   <header class="bg-gray-200 dark:bg-gray-900 sticky top-0 z-10 flex items-center min-h-[90px] max-h-[90px] border-b border-gray-300 dark:border-gray-800">
     <div class="wrap flex item-center justify-between">
       <span></span>
-      {#if auth}
-        <Dropdown btn="flex items-center focus:outline-none" menu="right-0">
-          <img src={auth.avatar} alt="User avatar" class="w-8 h-8 rounded-full">
-          <span class="ml-2 mr-3 font-medium">{auth.name}</span>
-          <Icon src={ChevronDown} class="h-3 w-3" />
+      <div class="flex items-center">
+        <button
+          class="mr-8 py-4 px-2 focus:outline-none"
+          use:tooltip={{content: 'Settings', placement: 'bottom'}}
+          on:click={() => settingsModal = !settingsModal}
+        >
+          <Icon src={Cog} class="w-5 h-5" />
+        </button>
+        {#if auth}
+          <Dropdown btn="flex items-center focus:outline-none" menu="right-0">
+            <img src={auth.avatar} alt="User avatar" class="w-8 h-8 rounded-full">
+            <span class="ml-2 mr-3 font-medium">{auth.name}</span>
+            <Icon src={ChevronDown} class="h-3 w-3" />
 
-          <svelte:fragment slot="menu">
-            <InertiaLink href="/users/{auth.slug}" class="menu-item">
-              My profile <Icon src={User} class="w-5 h-5" />
-            </InertiaLink>
-            <InertiaLink href="/settings" class="menu-item">
-              Settings <Icon src={Cog} class="w-5 h-5" />
-            </InertiaLink>
-            {#if auth.roles.includes('dev')}
-              <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
-              <button class="menu-item" on:click={() => formVisible = true}>
-                Add addon <Icon src={Plus} class="w-5 h-5" />
-              </button>
-            {/if}
-            {#if auth.roles.includes('admin')}
-              <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
-              <InertiaLink href="/admin" class="menu-item">
-                Admin <Icon src={Users} class="w-5 h-5" />
+            <svelte:fragment slot="menu">
+              <InertiaLink href="/users/{auth.slug}" class="menu-item">
+                My profile <Icon src={User} class="w-5 h-5" />
               </InertiaLink>
-            {/if}
-            <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
-            <a href="/logout" class="menu-item menu-item-danger">
-              Logout <Icon src={Logout} class="w-5 h-5" />
-            </a>
-          </svelte:fragment>
-        </Dropdown>
-      {:else}
-        <a href="/login" class="btn btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40">
-          Login with Discord
-        </a>
-      {/if}
+              <InertiaLink href="/settings" class="menu-item">
+                Profile settings <Icon src={Cog} class="w-5 h-5" />
+              </InertiaLink>
+              {#if auth.roles.includes('dev')}
+                <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
+                <button class="menu-item" on:click={() => formVisible = true}>
+                  Add addon <Icon src={Plus} class="w-5 h-5" />
+                </button>
+              {/if}
+              {#if auth.roles.includes('admin')}
+                <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
+                <InertiaLink href="/admin" class="menu-item">
+                  Admin <Icon src={Users} class="w-5 h-5" />
+                </InertiaLink>
+              {/if}
+              <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
+              <a href="/logout" class="menu-item menu-item-danger">
+                Logout <Icon src={Logout} class="w-5 h-5" />
+              </a>
+            </svelte:fragment>
+          </Dropdown>
+        {:else}
+          <a href="/login" class="btn btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40">
+            Login with Discord
+          </a>
+        {/if}
+      </div>
     </div>
   </header>
   {#if announcement && !localStorage.getItem(`announcement_${announcement.id}`)}
@@ -165,6 +175,10 @@
     </a>
   </div>
 </footer>
+
+{#if settingsModal}
+  <Settings on:close={() => settingsModal = false} />
+{/if}
 
 {#if auth && auth.roles.includes('dev')}
   <Form visible={formVisible} on:close={() => formVisible = false} />

@@ -1,6 +1,6 @@
 <script>
   import {Inertia} from '@inertiajs/inertia';
-  import Icon, {Sun, Moon, Trash} from 'svelte-hero-icons';
+  import Icon, {Trash} from 'svelte-hero-icons';
 
   import Layout from '$layout/Layout.svelte';
   import Spinner from '$components/Spinner.svelte';
@@ -8,14 +8,6 @@
 
   // State
   export let auth;
-
-  let theme = localStorage.theme;
-
-  const setTheme = value => {
-    theme = value;
-    localStorage.theme = value;
-    document.documentElement.setAttribute('class', value);
-  }
 
   let form = {
     name: auth.name,
@@ -98,23 +90,6 @@
           </section>
         </div>
       {/if}
-      <div class="mb-12">
-        <h3 class="font-display mb-2">Appearance</h3>
-        <section class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden p-4">
-          <button
-            class="flex items-center mb-4 w-full py-4 px-5 rounded border-2 focus:outline-none {theme === 'light' ? 'text-white bg-teal-500 border-teal-500' : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
-            on:click={() => setTheme('light')}
-          >
-            <Icon src={Sun} class="w-5 h-5 mr-3" /> Light Theme
-          </button>
-          <button
-            class="flex items-center w-full py-4 px-5 rounded border-2 focus:outline-none {theme === 'dark' ? 'text-white bg-teal-500 border-teal-500' : 'border-gray-200 hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600'}"
-            on:click={() => setTheme('dark')}
-          >
-            <Icon src={Moon} class="w-5 h-5 mr-3" /> Dark Theme
-          </button>
-        </section>
-      </div>
       <footer class="flex justify-between">
         <button class="btn btn-primary bg-red-500 hover:bg-red-400 ring-red-500 ring-opacity-40 focus:bg-red-400" on:click={() => deleteModal = true}>
           <Icon src={Trash} class="w-5 h-5 mr-2" /> Delete account

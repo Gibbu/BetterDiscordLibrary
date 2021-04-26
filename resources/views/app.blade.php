@@ -9,10 +9,14 @@
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 		<link href="{{ mix('/css/app.css') }}" rel="stylesheet" />
     <script src="{{ mix('/js/app.js') }}" defer></script>
+		<meta name="description" content="Themes and Plugins for BetterDiscord in one place.">
+		<meta property="og:description" content="Themes and Plugins for BetterDiscord in one place.">
+		<meta property="og:url" content="https://betterdiscordlibrary.com">
+		<meta property="og:image" content="/images/favicon.png">
 		<script>
 			// check for theme preference before page loads
 			if (!('theme' in localStorage)) {
-				localStorage.theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+				localStorage.theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 			}
 			document.documentElement.setAttribute('class', localStorage.theme);
 		</script>
