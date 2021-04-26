@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Addon;
+use App\Models\Announcement;
 use App\Models\User;
 use Inertia\Inertia;
 
@@ -37,5 +38,10 @@ class AdminController extends Controller {
 		$user->save();
 		
 		return redirect()->back()->with('flash', ['type' => 'success', 'message' => $user->name.'#'.$user->discrim.' updated']);
+	}
+
+	public function announcement() {
+		$announcement = Announcement::first();
+		return Inertia::render('Admin/Announcement', compact('announcement'));
 	}
 }

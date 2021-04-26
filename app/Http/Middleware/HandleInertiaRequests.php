@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -42,6 +43,7 @@ class HandleInertiaRequests extends Middleware
                 'type' => $request->session()->get('flash.type'),
                 'message' => $request->session()->get('flash.message')
             ] : false,
+            'announcement' => Announcement::first()
         ]);
     }
 }

@@ -1,5 +1,6 @@
 <script>
   import {onMount} from 'svelte';
+  import dayjs from 'dayjs';
   import tooltip from '$lib/tooltip';
   import {InertiaLink, page} from '@inertiajs/inertia-svelte';
   import Icon, {
@@ -19,12 +20,13 @@
   } from 'svelte-hero-icons';
 
   // State
-  let {auth} = $page.props;
+  let {auth, announcement} = $page.props;
 
   // Components
   import Flash from './Flash.svelte';
   import Dropdown from '$components/Dropdown.svelte';
   import Form from '$components/Addons/Form.svelte';
+  import Markdown from '$components/Markdown.svelte';
 
   export let title = 'Home'
 
@@ -58,6 +60,11 @@
   onMount(() => {
     document.querySelector('#app').removeAttribute('data-page');
   })
+
+  const closeAnnouncement = () => {
+    localStorage.setItem(`announcement_${announcement.id}`, 'true');
+    announcement = null;
+  }
 </script>
 
 <svelte:head>
@@ -130,6 +137,21 @@
       {/if}
     </div>
   </header>
+  {#if announcement && !localStorage.getItem(`announcement_${announcement.id}`)}
+    <div class="bg-gray-50 dark:bg-gray-950 border-b border-gray-300 dark:border-gray-800">
+      <div class="wrap py-4">
+        <header class="flex items-start justify-between">
+          <div>
+            <small class="text-gray-500 dark:text-gray-400 text-xs">Announcement</small>
+            <h1 class="text-gray-800 dark:text-white font-display text-3xl">{announcement.title}</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Posted on: {dayjs(announcement.created_at).format('D/MM/YYYY')}</p>
+          </div>
+          <button class="btn btn-secondary" on:click={closeAnnouncement}>Close</button>
+        </header>
+        <Markdown string={announcement.message} />
+      </div>
+    </div>
+  {/if}
   <slot />
 </div>
 

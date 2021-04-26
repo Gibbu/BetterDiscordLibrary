@@ -1830,6 +1830,14 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgba(236, 72, 153, var(--tw-bg-opacity));
 }
+.bg-gray-500 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(107, 114, 128, var(--tw-bg-opacity));
+}
+.bg-gray-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(156, 163, 175, var(--tw-bg-opacity));
+}
 .bg-opacity-10 {
   --tw-bg-opacity: 0.1;
 }
@@ -2244,6 +2252,10 @@ pre[class*="language-"] {
   --tw-bg-opacity: 0.05;
 }
 
+.hover\:bg-opacity-10:hover {
+  --tw-bg-opacity: 0.1;
+}
+
 .hover\:text-black:hover {
   --tw-text-opacity: 1;
   color: rgba(0, 0, 0, var(--tw-text-opacity));
@@ -2299,13 +2311,26 @@ pre[class*="language-"] {
   background-color: rgba(248, 113, 113, var(--tw-bg-opacity));
 }
 
+.focus\:bg-green-500:focus {
+  --tw-bg-opacity: 1;
+  background-color: rgba(16, 185, 129, var(--tw-bg-opacity));
+}
+
 .focus\:bg-opacity-10:focus {
   --tw-bg-opacity: 0.1;
+}
+
+.focus\:bg-opacity-20:focus {
+  --tw-bg-opacity: 0.2;
 }
 
 .focus\:text-red-500:focus {
   --tw-text-opacity: 1;
   color: rgba(239, 68, 68, var(--tw-text-opacity));
+}
+
+.focus\:opacity-20:focus {
+  opacity: 0.2;
 }
 
 .focus\:outline-none:focus {
@@ -2332,6 +2357,11 @@ pre[class*="language-"] {
 .focus\:ring-pink-500:focus {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgba(236, 72, 153, var(--tw-ring-opacity));
+}
+
+.focus\:ring-red-500:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgba(239, 68, 68, var(--tw-ring-opacity));
 }
 
 .focus\:ring-opacity-40:focus {
@@ -2434,6 +2464,11 @@ pre[class*="language-"] {
 .dark .dark\:border-gray-700 {
   --tw-border-opacity: 1;
   border-color: rgba(55, 65, 81, var(--tw-border-opacity));
+}
+
+.dark .dark\:border-gray-600 {
+  --tw-border-opacity: 1;
+  border-color: rgba(75, 85, 99, var(--tw-border-opacity));
 }
 
 .dark .dark\:bg-gray-900 {

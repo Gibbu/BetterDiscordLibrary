@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AddonController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
@@ -63,6 +64,11 @@ Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function() {
   Route::put('/user', [AdminController::class, 'update']);
 
   Route::get('/addons', [AdminController::class, 'addons']);
+
+  Route::get('/announcement', [AdminController::class, 'announcement']);
+  Route::post('/announcement', [AnnouncementController::class, 'store']);
+  Route::put('/announcement/{id}', [AnnouncementController::class, 'update']);
+  Route::delete('/announcement/{id}', [AnnouncementController::class, 'destroy']);
 });
 
 

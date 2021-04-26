@@ -1,15 +1,16 @@
 <script>
   import {InertiaLink, page} from '@inertiajs/inertia-svelte';
-  import Icon, {Users, Code} from 'svelte-hero-icons';
+  import Icon, {Users, Code, Speakerphone} from 'svelte-hero-icons';
 
   import Layout from './Layout.svelte';
 
   export let title;
 
-  const icons = {Users, Code}
+  const icons = {Users, Code, Speakerphone}
   const nav = [
     {href: 'users', value: 'Users', icon: 'Users'},
     {href: 'addons', value: 'Addons', icon: 'Code'},
+    {href: 'announcement', value: 'Announcement', icon: 'Speakerphone'},
   ]
 
   $: active = (href) => {
