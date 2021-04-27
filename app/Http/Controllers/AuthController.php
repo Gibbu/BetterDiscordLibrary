@@ -37,8 +37,8 @@ class AuthController extends Controller {
 
 	public function update() {
 		request()->validate([
-			'name' => ['required'],
-			'slug' => ['required', Rule::unique('users')->ignore(Auth::id())]
+			'name' => ['required', 'min:4'],
+			'slug' => ['required', 'min:4', Rule::unique('users')->ignore(Auth::id())]
 		]);
 
 		$user = User::find(Auth::id());
