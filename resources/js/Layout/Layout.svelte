@@ -24,6 +24,7 @@
   // Components
   import Flash from './Flash.svelte';
   import Settings from './SettingsModal.svelte';
+  import Search from './Search.svelte';
   import Dropdown from '$components/Dropdown.svelte';
   import Form from '$components/Addons/Form.svelte';
   import Markdown from '$components/Markdown.svelte';
@@ -99,7 +100,7 @@
 <div id="page" class="ml-[300px]">
   <header class="bg-gray-200 dark:bg-gray-900 sticky top-0 z-10 flex items-center min-h-[90px] max-h-[90px] border-b border-gray-300 dark:border-gray-800">
     <div class="wrap flex item-center justify-between">
-      <span></span>
+      <Search />
       <div class="flex items-center">
         <button
           class="mr-8 py-4 px-2 focus:outline-none"

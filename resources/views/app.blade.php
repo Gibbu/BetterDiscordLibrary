@@ -12,7 +12,6 @@
 		<meta name="description" content="Themes and Plugins for BetterDiscord in one place.">
 		<meta property="og:description" content="Themes and Plugins for BetterDiscord in one place.">
 		<meta property="og:url" content="https://betterdiscordlibrary.com">
-		<meta property="og:image" content="/images/favicon.png">
 		<script>
 			// check for theme preference before page loads
 			if (!('theme' in localStorage)) {
