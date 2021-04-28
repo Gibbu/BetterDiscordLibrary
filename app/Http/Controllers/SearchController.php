@@ -9,7 +9,10 @@ class SearchController extends Controller {
 		$query = request()->query('query');
 
 		if (strlen($query) > 2) {
-			$addons = Addon::where('name', 'like', '%'.$query.'%')->with('user')->limit(10)->get();
+			$addons = Addon::where('name', 'like', '%'.$query.'%')
+				->with('user')
+				->limit(15)
+				->get();
 			return $addons;
 		}
 	}

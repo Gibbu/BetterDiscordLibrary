@@ -33,6 +33,12 @@ class AddonController extends Controller {
 	public function show($type, $name) {
 		if ($type == 'themes' || $type == 'plugins') {
 			$addon = Addon::where(['type' => rtrim($type, 's'), 'name' => $name])->with('user')->withCount('likes')->firstOrFail();
+			$comments = $addon->comments()
+				->with(['user',	'addon', 'replies' => fn($q) => $q->with('user')])
+				->whereNull('reply_id')
+				->orderBy('pinned', 'desc')
+				->orderBy('created_at', 'desc')
+				->get();
 
 			if (!session('_'.$addon->name)) {
 				$addon->view_count = $addon->view_count + 1;
@@ -41,7 +47,7 @@ class AddonController extends Controller {
 			}
 
 			$isLiked = Auth::check() ? Auth::user()->likes->where('addon_id', $addon->id)->first() : false;
-			return Inertia::render('Addons/Show', compact('addon', 'isLiked'));
+			return Inertia::render('Addons/Show', compact('addon', 'isLiked', 'comments'));
 		}
 	}
 

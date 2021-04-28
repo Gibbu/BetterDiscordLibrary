@@ -43,7 +43,8 @@ class HandleInertiaRequests extends Middleware
                 'type' => $request->session()->get('flash.type'),
                 'message' => $request->session()->get('flash.message')
             ] : false,
-            'announcement' => Announcement::first()
+            'announcement' => Announcement::first(),
+            'unreadNotifications' => $request->user() ? $request->user()->unreadNotifications->count() : null
         ]);
     }
 }

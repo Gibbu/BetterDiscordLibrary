@@ -14,12 +14,10 @@
     QuestionMarkCircle,
     AcademicCap,
     Code,
+    Bell,
     Users,
     Mail
   } from 'svelte-hero-icons';
-
-  // State
-  let {auth, announcement} = $page.props;
 
   // Components
   import Flash from './Flash.svelte';
@@ -62,8 +60,8 @@
   })
 
   const closeAnnouncement = () => {
-    localStorage.setItem(`announcement_${announcement.id}`, 'true');
-    announcement = null;
+    localStorage.setItem(`announcement_${$page.props.announcement.id}`, 'true');
+    $page.props.announcement = null;
   }
 
   let settingsModal = false;
@@ -103,32 +101,45 @@
       <Search />
       <div class="flex items-center">
         <button
-          class="mr-8 py-4 px-2 focus:outline-none"
-          use:tooltip={{content: 'Settings', placement: 'bottom'}}
+          class="mr-8 py-4 focus:outline-none"
+          use:tooltip={{content: 'Site settings', placement: 'bottom'}}
           on:click={() => settingsModal = !settingsModal}
         >
           <Icon src={Cog} class="w-5 h-5" />
         </button>
-        {#if auth}
+        {#if $page.props.auth && $page.props.unreadNotifications}
+          <span class="mr-8" use:tooltip={{content: 'Notifications', placement: 'bottom'}}>
+            <InertiaLink href="/notifications" class="relative block py-4">
+              <Icon src={Bell} class="w-5 h-5" />
+              <span class="absolute top-1 -right-2 bg-red-500 text-white flex items-center justify-center text-xs w-4 h-4 font-bold rounded-full">
+                {$page.props.unreadNotifications}
+              </span>
+            </InertiaLink>
+          </span>
+        {/if}
+        {#if $page.props.auth}
           <Dropdown btn="flex items-center focus:outline-none" menu="right-0">
-            <img src={auth.avatar} alt="User avatar" class="w-8 h-8 rounded-full">
-            <span class="ml-2 mr-3 font-medium">{auth.name}</span>
+            <img src={$page.props.auth.avatar} alt="User avatar" class="w-8 h-8 rounded-full">
+            <span class="ml-2 mr-3 font-medium">{$page.props.auth.name}</span>
             <Icon src={ChevronDown} class="h-3 w-3" />
 
             <svelte:fragment slot="menu">
-              <InertiaLink href="/users/{auth.slug}" class="menu-item">
+              <InertiaLink href="/users/{$page.props.auth.slug}" class="menu-item">
                 My profile <Icon src={User} class="w-5 h-5" />
+              </InertiaLink>
+              <InertiaLink href="/notifications" class="menu-item">
+                Notifications <Icon src={Bell} class="w-5 h-5" />
               </InertiaLink>
               <InertiaLink href="/settings" class="menu-item">
                 Profile settings <Icon src={Cog} class="w-5 h-5" />
               </InertiaLink>
-              {#if auth.roles.includes('dev')}
+              {#if $page.props.auth.roles.includes('dev')}
                 <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
                 <button class="menu-item" on:click={() => formVisible = true}>
                   Add addon <Icon src={Plus} class="w-5 h-5" />
                 </button>
               {/if}
-              {#if auth.roles.includes('admin')}
+              {#if $page.props.auth.roles.includes('admin')}
                 <hr class="border-gray-200 dark:border-gray-800 my-2 mx-1.5">
                 <InertiaLink href="/admin" class="menu-item">
                   Admin <Icon src={Users} class="w-5 h-5" />
@@ -148,18 +159,18 @@
       </div>
     </div>
   </header>
-  {#if announcement && !localStorage.getItem(`announcement_${announcement.id}`)}
+  {#if $page.props.announcement && !localStorage.getItem(`announcement_${$page.props.announcement.id}`)}
     <div class="bg-gray-50 dark:bg-gray-950 border-b border-gray-300 dark:border-gray-800">
       <div class="wrap py-4">
         <header class="flex items-start justify-between">
           <div>
             <small class="text-gray-500 dark:text-gray-400 text-xs">Announcement</small>
-            <h1 class="text-gray-800 dark:text-white font-display text-3xl">{announcement.title}</h1>
-            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Posted on: {dayjs(announcement.created_at).format('D/MM/YYYY')}</p>
+            <h1 class="text-gray-800 dark:text-white font-display text-3xl">{$page.props.announcement.title}</h1>
+            <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">Posted on: {dayjs($page.props.announcement.created_at).format('D/MM/YYYY')}</p>
           </div>
           <button class="btn btn-secondary" on:click={closeAnnouncement}>Close</button>
         </header>
-        <Markdown string={announcement.message} />
+        <Markdown string={$page.props.announcement.message} />
       </div>
     </div>
   {/if}
@@ -181,6 +192,6 @@
   <Settings on:close={() => settingsModal = false} />
 {/if}
 
-{#if auth && auth.roles.includes('dev')}
+{#if $page.props.auth && $page.props.auth.roles.includes('dev')}
   <Form visible={formVisible} on:close={() => formVisible = false} />
 {/if}

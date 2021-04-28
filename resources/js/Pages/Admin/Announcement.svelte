@@ -46,7 +46,7 @@
 
 <AdminLayout title="Admin">
   <form on:submit|preventDefault={submit}>
-    <div class="bg-gray-500 dark:bg-gray-800 rounded p-4">
+    <div class="bg-gray-50 dark:bg-gray-800 rounded p-4">
       <div class="mb-4">
         <p class="text-sm mb-2">Title</p>
         <input type="text" class="input input-secondary w-full {errors?.title ? '!border-red-500 hover:!border-red-400' : ''}" bind:value={form.title}>

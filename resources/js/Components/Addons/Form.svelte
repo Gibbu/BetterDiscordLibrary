@@ -30,7 +30,6 @@
     Inertia.visit((editing ? `/${data.type}s/${data.name}` : '/addon'), {
       method: (editing ? 'put' : 'post'),
       data,
-      preserveState: false,
       onStart() {
         submitting = true;
       },

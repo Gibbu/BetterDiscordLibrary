@@ -11,11 +11,14 @@
   import Gallery from '$components/Addons/Gallery.svelte';
   import Markdown from '$components/Markdown.svelte';
   import AreYouSure from '$components/Modals/AreYouSure.svelte';
+  import Comment from '$components/Comments/Comment.svelte';
+  import CommentForm from '$components/Comments/CommentForm.svelte';
 
   // State
   export let auth;
   export let addon;
   export let isLiked;
+  export let comments;
 
   let likeCD = false;
   const like = async() => {
@@ -40,6 +43,12 @@
   }
 
   const formatNumber = number => number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+
+  let postVisible = false;
+  let commentPostForm = {
+    message: '',
+    addon_id: addon.id
+  }
 </script>
 
 <Layout title={addon.name}>
@@ -67,7 +76,30 @@
     <div class="mt-12 mb-24 grid grid-cols-[1fr,360px] gap-8 items-start">
       <main>
         <Gallery images={addon.images} />
-        <p class="text-gray-500 dark:text-gray-400 text-sm my-12 select-none">Comments are coming soon.</p>
+        <section class="mt-4">
+          <header class="mb-4">
+            <h3 class="font-display text-gray-800 dark:text-white">Comments <span class="opacity-50">({comments.length})</span></h3>
+          </header>
+        </section>
+        {#if auth}
+          <div class="flex items-start">
+            {#if postVisible}
+              <CommentForm method="POST" url="/comment" form={commentPostForm} on:close={() => postVisible = false} />
+            {:else}
+              <img src={auth.avatar} alt="User avatar" class="w-10 h-10 rounded-full mr-4">
+              <button type="button" class="text-gray-500 dark:text-gray-400 pt-1.5 pb-2.5 w-full text-left cursor-text border-b border-gray-300 dark:border-gray-800 focus:outline-none" on:click={() => postVisible = true}>
+                Click to post a comment
+              </button>
+            {/if}
+          </div>
+        {:else}
+          <p>You need to be <a href="/login" class="underline text-teal-600 dark:text-teal-500">Logged in</a> to post a comment</p>
+        {/if}
+        <div class="mt-16">
+          {#each comments as comment}
+            <Comment {comment} />
+          {/each}
+        </div>
       </main>
       <aside>
         <div class="rounded bg-gray-50 dark:bg-gray-800 p-4">

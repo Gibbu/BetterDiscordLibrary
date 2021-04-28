@@ -8,7 +8,7 @@
 </script>
 
 <Layout title="Developers">
-  <header class="bg-gray-50 dark:bg-gray-950 border-gray-300 dark:border-gray-800 py-12 border-b flex items-center">
+  <header class="bg-gray-100 dark:bg-gray-950 border-gray-300 dark:border-gray-800 py-12 border-b flex items-center">
     <div class="wrap">
       <h1 class="text-gray-800 dark:text-white text-4xl font-display capitalize">Developers</h1>
     </div>

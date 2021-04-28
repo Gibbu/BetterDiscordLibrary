@@ -109,28 +109,29 @@
   </div>
   {#if visible && term.length > 2}
     <div
+      id="global-results"
       bind:this={resultsEl}
       on:mouseenter={() => hovered = true}
       on:mouseleave={() => hovered = false}
-      class="bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-800 p-4 shadow-xl rounded absolute top-full w-full transform translate-y-2"
+      class="bg-gray-50 dark:bg-gray-950 border border-gray-300 dark:border-gray-800 px-4 pt-4 shadow-xl rounded overflow-y-auto max-h-[65vh] absolute top-full w-full transform translate-y-2"
     >
       {#if results.length > 0}
         {#each results as result, i}
           <button
             href="{result.type}s/{result.name}"
-            class="rounded flex items-center py-3 px-4 w-full mb-2 text-left focus:outline-none {index === i ? 'bg-teal-500 text-white' : 'bg-gray-200 dark:bg-gray-800'} last:mb-0"
+            class="rounded flex items-center py-3 px-4 w-full mb-2 text-left focus:outline-none {index === i ? 'bg-teal-500 text-white' : 'bg-gray-200 dark:bg-gray-800'} last:mb-4"
             on:mouseenter={() => index = i}
             on:click={open}
           >
             <Icon src={icons[result.type]} class="w-8 h-8 mr-4" />
             <div class="flex-1">
               <h4 class="font-display {index === i ? 'text-white' : 'text-gray-800 dark:text-white'}">{result.name}</h4>
-              <p class="text-sm -mt-1 font-semibold">by {result.user.name}</p>
+              <p class="text-sm -mt-1 font-semibold {index !== i ? 'opacity-70' : ''}">by {result.user.name}</p>
             </div>
           </button>
         {/each}
       {:else}
-        <p>Nothing found</p>
+        <p class="mb-4 text-sm opacity-60">Nothing found...</p>
       {/if}
     </div>
   {/if}

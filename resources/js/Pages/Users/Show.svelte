@@ -20,7 +20,7 @@
 </script>
 
 <Layout title="{user.slug}">
-  <header class="bg-gray-50 dark:bg-gray-950 py-12 flex items-center border-b border-gray-300 dark:border-gray-800">
+  <header class="bg-gray-100 dark:bg-gray-950 py-12 flex items-center border-b border-gray-300 dark:border-gray-800">
     <div class="wrap flex items-center justify-between">
       <div class="flex items-center">
         <img src={user.avatar} alt="User avatar" class="w-24 h-24 rounded-full mr-6">

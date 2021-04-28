@@ -14,7 +14,6 @@
     dispatch('close');
   }
   const confirm = () => {
-    submitting = true;
     dispatch('confirm');
   }
 </script>

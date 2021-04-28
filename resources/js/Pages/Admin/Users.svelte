@@ -51,16 +51,18 @@
     <input type="text" class="input" bind:value={query} placeholder="Search user..." on:keyup={search}>
   </div>
   <div class="bg-gray-50 dark:bg-gray-800 rounded overflow-hidden">
-    <header class="grid grid-cols-[48px,1fr,1fr] gap-4 p-4 items-center border-b border-gray-200 dark:border-gray-700">
+    <header class="grid grid-cols-[48px,1fr,1fr,.2fr] gap-4 p-4 items-center border-b border-gray-200 dark:border-gray-700">
       <span></span>
       <span class="text-xs text-gray-500 dark:text-gray-400">Username</span>
       <span class="text-xs text-gray-500 dark:text-gray-400">Slug</span>
+      <span class="text-xs text-gray-500 dark:text-gray-400">ID</span>
     </header>
     {#each users as user}
-      <button class="grid grid-cols-[48px,1fr,1fr] gap-4 p-4 w-full text-left items-center border-b border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 last:border-0 focus:outline-none" on:click={() => openUser(user)}>
+      <button class="grid grid-cols-[48px,1fr,1fr,.2fr] gap-4 p-4 w-full text-left items-center border-b border-gray-200 dark:border-gray-700 hover:bg-white dark:hover:bg-gray-700 last:border-0 focus:outline-none" on:click={() => openUser(user)}>
         <img src={user.avatar} alt="User avatar" class="w-12 h-12 rounded-full">
-        <span>{user.name}</span>
-        <span>{user.slug}</span>
+        <span class="truncate">{user.name}</span>
+        <span class="truncate">{user.slug}</span>
+        <span class="truncate">{user.id}</span>
       </button>
     {/each}
   </div>

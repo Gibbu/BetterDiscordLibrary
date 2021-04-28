@@ -7,6 +7,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingsController;
@@ -39,9 +40,25 @@ Route::group(['middleware' => 'guest'], function() {
 Route::group(['middleware' => 'auth'], function() {
   Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
+  // Notification routes
+  Route::group(['prefix' => 'notifications'], function() {
+    Route::get('/', [NotificationController::class, 'index']);
+    Route::put('/read/{id}', [NotificationController::class, 'read']);
+    Route::put('/readAll', [NotificationController::class, 'readAll']);
+  });
+
   // Setting Routes
   Route::group(['prefix' => 'settings'], function() {
     Route::get('/', [SettingsController::class, 'index']);
+  });
+
+  // Comments
+  Route::group(['prefix' => 'comment'], function() {
+    Route::post('/', [CommentController::class, 'store']);
+    Route::put('{id}', [CommentController::class, 'update']);
+    Route::delete('{id}', [CommentController::class, 'destroy']);
+
+    Route::put('/pin/{id}', [CommentController::class, 'pin'])->middleware('role:dev|admin');
   });
 
   // Developer Routes
@@ -62,7 +79,7 @@ Route::group(['middleware' => 'auth'], function() {
 
 
 // Admin routes
-Route::group(['middleware' => ['role:admin'], 'prefix' => 'admin'], function() {
+Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin'], function() {
   Route::redirect('/', '/admin/users');
 
   Route::get('/users', [AdminController::class, 'users']);
