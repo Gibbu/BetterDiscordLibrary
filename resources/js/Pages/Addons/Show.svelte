@@ -68,7 +68,7 @@
             <Icon src={Heart} solid={isLiked} class="w-5 h-5 mr-2" /> Like
           </a>
         {/if}
-        <a href={addon.download} target="_blank" class="btn btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40" on:click={download}>
+        <a href="/download/{addon.id}" class="btn btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40">
           <Icon src={Download} class="w-5 h-5 mr-2" /> Download
         </a>
       </div>

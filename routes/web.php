@@ -96,8 +96,8 @@ Route::group(['middleware' => ['auth', 'role:admin'], 'prefix' => 'admin'], func
 
 
 // Addon routes
-Route::put('/like/{id}', [LikeController::class, 'like'])->middleware('auth');
-Route::put('/download/{id}', [AddonController::class, 'download']);
+Route::put('/like/{id}', [LikeController::class, 'like'])->middleware(['auth', 'throttle:actions']);
+Route::get('/download/{id}', [AddonController::class, 'download'])->middleware('throttle:actions');
 
 Route::group(['prefix' => '{type}'], function() {
   Route::get('/', [AddonController::class, 'index'])->name('addon.index');

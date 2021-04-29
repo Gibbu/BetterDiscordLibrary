@@ -74,20 +74,22 @@ class AddonController extends Controller {
 		return abort(404);
 	}
 
-	// Ajax calls
 	public function download($id) {
+		$addon = Addon::findOrFail($id);
+
 		if (!session()->get('dl_'.$id)) {
 			session(['dl_'.$id => true]);
 
-			$addon = Addon::findOrFail($id);
 			$addon->download_count = $addon->download_count + 1;
 			$addon->save();
-
-			return ['message' => 'Download added to download counter'];
 		}
-		return ['message' => 'already clicked'];
-	}
 
+		$fileName = $addon->name.'.'.($addon->type == 'theme' ? 'theme.css' : 'plugin.js');
+		$file = tempnam(sys_get_temp_dir(), $fileName);
+		copy($addon->download, $file);
+
+		return response()->download($file, $fileName);
+	}
 
 	// Private functions
 	private function save($addon, $editing = false) {

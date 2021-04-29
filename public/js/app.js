@@ -20427,7 +20427,7 @@ function create_else_block(ctx) {
       if (!mounted) {
         dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button, "click",
         /*click_handler*/
-        ctx[13]);
+        ctx[12]);
         mounted = true;
       }
     },
@@ -20462,12 +20462,12 @@ function create_if_block_6(ctx) {
       url: "/comment",
       form:
       /*commentPostForm*/
-      ctx[11]
+      ctx[10]
     }
   });
   commentform.$on("close",
   /*close_handler*/
-  ctx[12]);
+  ctx[11]);
   return {
     c: function c() {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.create_component)(commentform.$$.fragment);
@@ -21004,9 +21004,9 @@ function create_if_block(ctx) {
       if (!mounted) {
         dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button0, "click",
         /*click_handler_1*/
-        ctx[14]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button1, "click",
+        ctx[13]), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(button1, "click",
         /*click_handler_2*/
-        ctx[15])];
+        ctx[14])];
         mounted = true;
       }
     },
@@ -21099,7 +21099,7 @@ function create_default_slot_1(ctx) {
   var t23;
   var t24_value =
   /*formatNumber*/
-  ctx[10](
+  ctx[9](
   /*addon*/
   ctx[2].view_count) + "";
   var t24;
@@ -21109,7 +21109,7 @@ function create_default_slot_1(ctx) {
   var t26;
   var t27_value =
   /*formatNumber*/
-  ctx[10](
+  ctx[9](
   /*addon*/
   ctx[2].download_count) + "";
   var t27;
@@ -21119,7 +21119,7 @@ function create_default_slot_1(ctx) {
   var t29;
   var t30_value =
   /*formatNumber*/
-  ctx[10](
+  ctx[9](
   /*addon*/
   ctx[2].likes_count) + "";
   var t30;
@@ -21154,8 +21154,6 @@ function create_default_slot_1(ctx) {
   /*addon*/
   ctx[2].user.id;
   var current;
-  var mounted;
-  var dispose;
   markdown = new $components_Markdown_svelte__WEBPACK_IMPORTED_MODULE_11__.default({
     props: {
       string:
@@ -21379,10 +21377,9 @@ function create_default_slot_1(ctx) {
       if (if_block6) if_block6.c();
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(h1, "class", "text-gray-800 dark:text-white font-display text-4xl capitalize");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div0, "class", "flex-1 mr-8");
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a0, "href", a0_href_value =
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a0, "href", a0_href_value = "/download/" +
       /*addon*/
-      ctx[2].download);
-      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a0, "target", "_blank");
+      ctx[2].id);
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a0, "class", "btn btn-primary bg-teal-500 hover:bg-teal-400 focus:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(div1, "class", "flex");
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(header0, "class", "mt-12 flex items-start justify-between");
@@ -21501,13 +21498,6 @@ function create_default_slot_1(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.append)(aside, t38);
       if (if_block6) if_block6.m(aside, null);
       current = true;
-
-      if (!mounted) {
-        dispose = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.listen)(a0, "click",
-        /*download*/
-        ctx[8]);
-        mounted = true;
-      }
     },
     p: function p(ctx, dirty) {
       var _ctx$2$user$links6, _ctx$2$user$links7, _ctx$2$user$links8;
@@ -21550,9 +21540,9 @@ function create_default_slot_1(ctx) {
 
       if (!current || dirty &
       /*addon*/
-      4 && a0_href_value !== (a0_href_value =
+      4 && a0_href_value !== (a0_href_value = "/download/" +
       /*addon*/
-      ctx[2].download)) {
+      ctx[2].id)) {
         (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.attr)(a0, "href", a0_href_value);
       }
 
@@ -21712,21 +21702,21 @@ function create_default_slot_1(ctx) {
       /*addon*/
       4) && t24_value !== (t24_value =
       /*formatNumber*/
-      ctx[10](
+      ctx[9](
       /*addon*/
       ctx[2].view_count) + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t24, t24_value);
       if ((!current || dirty &
       /*addon*/
       4) && t27_value !== (t27_value =
       /*formatNumber*/
-      ctx[10](
+      ctx[9](
       /*addon*/
       ctx[2].download_count) + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t27, t27_value);
       if ((!current || dirty &
       /*addon*/
       4) && t30_value !== (t30_value =
       /*formatNumber*/
-      ctx[10](
+      ctx[9](
       /*addon*/
       ctx[2].likes_count) + "")) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.set_data)(t30, t30_value);
       if ((!current || dirty &
@@ -21882,8 +21872,6 @@ function create_default_slot_1(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.destroy_component)(icon5);
       if (if_block5) if_block5.d();
       if (if_block6) if_block6.d();
-      mounted = false;
-      dispose();
     }
   };
 } // (196:0) <AreYouSure visible={deleteModal} title="Delete {addon.name}" on:close={() => deleteModal = false} on:confirm={destroy}>
@@ -21956,7 +21944,7 @@ function create_fragment(ctx) {
   });
   form.$on("close",
   /*close_handler_1*/
-  ctx[16]);
+  ctx[15]);
   areyousure = new $components_Modals_AreYouSure_svelte__WEBPACK_IMPORTED_MODULE_12__.default({
     props: {
       visible:
@@ -21975,10 +21963,10 @@ function create_fragment(ctx) {
   });
   areyousure.$on("close",
   /*close_handler_2*/
-  ctx[17]);
+  ctx[16]);
   areyousure.$on("confirm",
   /*destroy*/
-  ctx[9]);
+  ctx[8]);
   return {
     c: function c() {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_1__.create_component)(layout.$$.fragment);
@@ -22167,7 +22155,7 @@ function instance($$self, $$props, $$invalidate) {
     if ("comments" in $$props) $$invalidate(3, comments = $$props.comments);
   };
 
-  return [isLiked, auth, addon, comments, addonEditModal, deleteModal, postVisible, like, download, destroy, formatNumber, commentPostForm, close_handler, click_handler, click_handler_1, click_handler_2, close_handler_1, close_handler_2];
+  return [isLiked, auth, addon, comments, addonEditModal, deleteModal, postVisible, like, destroy, formatNumber, commentPostForm, close_handler, click_handler, click_handler_1, click_handler_2, close_handler_1, close_handler_2];
 }
 
 var Show = /*#__PURE__*/function (_SvelteComponent) {
