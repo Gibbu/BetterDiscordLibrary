@@ -1,5 +1,4 @@
 <script>
-  import axios from 'axios';
   import {InertiaLink} from '@inertiajs/inertia-svelte';
   import tooltip from '$lib/tooltip';
   import Icon, {Download, Eye, Heart} from 'svelte-hero-icons';
@@ -10,10 +9,6 @@
   dayjs.extend(advancedFormat);
 
   export let addon;
-
-  const download = () => {
-    axios.put(`/download/${addon.id}`);
-  }
 </script>
 
 <div>
@@ -24,11 +19,9 @@
     <div class="absolute bottom-0 w-full p-4 flex items-center justify-between bg-gradient-to-b from-transparent to-black pointer-events-none">
       <h2 class="font-display text-white text-xl">{addon.name}</h2>
       <a
-        href={addon.download}
-        target="_blank"
+        href="/download/{addon.id}"
         class="bg-white bg-opacity-10 text-white p-2 rounded pointer-events-auto hover:bg-opacity-100 hover:text-black"
         use:tooltip={{content: 'Download', delay: [250, 0]}}
-        on:click={download}
       >
         <Icon src={Download} class="w-5 h-5" />
       </a>
