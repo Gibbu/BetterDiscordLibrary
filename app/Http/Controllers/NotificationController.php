@@ -17,6 +17,7 @@ class NotificationController extends Controller {
 			$notifications[] = [
 				'id' => $notification->id,
 				'message' => $notification->data['message'],
+				'created_at' => $notification->created_at,
 				'read_at' => $notification->read_at,
 				'user' => fn() => $user ? [
 					'name' => $user->name,
