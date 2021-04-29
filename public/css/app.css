@@ -954,6 +954,15 @@ select {
   color: #111827;
   font-weight: 600;
   font-size: 0.875em;
+  background-color: #d1d5db;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+.prose code:before {
+  content: none !important;
+}
+.prose code:after {
+  content: none !important;
 }
 .prose code::before {
   content: "`";
@@ -2533,6 +2542,7 @@ pre[class*="language-"] {
 
 .dark .dark\:prose-light code {
   color: #fff;
+  background-color: #1f2937;
 }
 
 .dark .dark\:prose-light a code {

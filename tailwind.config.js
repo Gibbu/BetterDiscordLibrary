@@ -30,6 +30,21 @@ module.exports = {
         }
       },
       typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            code: {
+              backgroundColor: theme('colors.gray.300'),
+              padding: '0.125rem 0.375rem',
+              borderRadius: theme('spacing.1'),
+              '&:before': {
+                content: 'none !important'
+              },
+              '&:after': {
+                content: 'none !important'
+              }
+            }
+          }
+        },
         light: {
           css: [
             {
@@ -73,6 +88,8 @@ module.exports = {
               },
               code: {
                 color: theme('colors.white'),
+                backgroundColor: theme('colors.gray.800'),
+                borderRadius: theme('rounded')
               },
               'a code': {
                 color: theme('colors.white'),
