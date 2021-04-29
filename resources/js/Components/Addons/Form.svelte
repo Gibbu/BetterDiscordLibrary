@@ -100,10 +100,10 @@
           {/if}
         </label>
         <label class="block mb-4">
-          <p class="text-sm mb-1">Download link <span class="text-red-500">*</span></p>
+          <p class="text-sm mb-1">Download link (must be a raw link) <span class="text-red-500">*</span></p>
           <input type="text" class="input w-full mr-2 {errors?.download ? '!border-red-500 hover:!border-red-400' : ''}" bind:value={data.download} placeholder="Download URL...">
           {#if errors?.download}
-          <small class="text-red-500">{errors.download}</small>
+            <small class="text-red-500">{errors.download}</small>
           {/if}
         </label>
         <div class="mb-4">

@@ -9486,7 +9486,7 @@ function create_default_slot(ctx) {
       t10 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       label1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("label");
       p1 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("p");
-      p1.innerHTML = "Download link <span class=\"text-red-500\">*</span>";
+      p1.innerHTML = "Download link (must be a raw link) <span class=\"text-red-500\">*</span>";
       t13 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
       input0 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("input");
       t14 = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.space)();
