@@ -59,9 +59,11 @@
     document.querySelector('#app').removeAttribute('data-page');
   })
 
+
+  $: showAnnouncement = JSON.parse(localStorage.getItem(`announcement_${$page.props.announcement.id}`)) || false;
   const closeAnnouncement = () => {
     localStorage.setItem(`announcement_${$page.props.announcement.id}`, 'true');
-    $page.props.announcement = null;
+    showAnnouncement = true;
   }
 
   let settingsModal = false;
@@ -159,7 +161,7 @@
       </div>
     </div>
   </header>
-  {#if $page.props.announcement && !localStorage.getItem(`announcement_${$page.props.announcement.id}`)}
+  {#if !showAnnouncement}
     <div class="bg-gray-50 dark:bg-gray-950 border-b border-gray-300 dark:border-gray-800">
       <div class="wrap py-4">
         <header class="flex items-start justify-between">
