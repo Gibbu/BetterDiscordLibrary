@@ -17368,7 +17368,7 @@ function create_menu_slot(ctx) {
       (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.destroy_component)(icon);
     }
   };
-} // (164:2) {#if !showAnnouncement}
+} // (164:2) {#if !showAnnouncement && $page.props.announcement}
 
 
 function create_if_block_2(ctx) {
@@ -17672,7 +17672,9 @@ function create_fragment(ctx) {
   if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
   var if_block2 = !
   /*showAnnouncement*/
-  ctx[5] && create_if_block_2(ctx);
+  ctx[5] &&
+  /*$page*/
+  ctx[1].props.announcement && create_if_block_2(ctx);
   var default_slot_template =
   /*#slots*/
   ctx[9]["default"];
@@ -17923,13 +17925,15 @@ function create_fragment(ctx) {
 
       if (!
       /*showAnnouncement*/
-      ctx[5]) {
+      ctx[5] &&
+      /*$page*/
+      ctx[1].props.announcement) {
         if (if_block2) {
           if_block2.p(ctx, dirty);
 
           if (dirty &
-          /*showAnnouncement*/
-          32) {
+          /*showAnnouncement, $page*/
+          34) {
             (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.transition_in)(if_block2, 1);
           }
         } else {
@@ -18174,7 +18178,9 @@ function instance($$self, $$props, $$invalidate) {
     if ($$self.$$.dirty &
     /*$page*/
     2) {
-      $: $$invalidate(5, showAnnouncement = JSON.parse(localStorage.getItem("announcement_".concat($page.props.announcement.id))) || false);
+      var _$page$props$announce;
+
+      $: $$invalidate(5, showAnnouncement = JSON.parse(localStorage.getItem("announcement_".concat((_$page$props$announce = $page.props.announcement) === null || _$page$props$announce === void 0 ? void 0 : _$page$props$announce.id))) || false);
     }
   };
 
