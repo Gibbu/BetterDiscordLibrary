@@ -14134,8 +14134,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
-/* harmony import */ var svelte__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! svelte */ "./node_modules/svelte/index.mjs");
-/* harmony import */ var $lib_clickOutside__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! $lib/clickOutside */ "./resources/js/Lib/clickOutside.js");
+/* harmony import */ var $lib_clickOutside__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! $lib/clickOutside */ "./resources/js/Lib/clickOutside.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -14170,14 +14169,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
-
 var get_menu_slot_changes = function get_menu_slot_changes(dirty) {
   return {};
 };
 
 var get_menu_slot_context = function get_menu_slot_context(ctx) {
   return {};
-}; // (27:2) {#if visible}
+}; // (26:2) {#if visible}
 
 
 function create_if_block(ctx) {
@@ -14214,7 +14212,7 @@ function create_if_block(ctx) {
       current = true;
 
       if (!mounted) {
-        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.action_destroyer)(clickOutside_action = $lib_clickOutside__WEBPACK_IMPORTED_MODULE_2__.default.call(null, div,
+        dispose = [(0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.action_destroyer)(clickOutside_action = $lib_clickOutside__WEBPACK_IMPORTED_MODULE_1__.default.call(null, div,
         /*trigger*/
         ctx[5])), (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.listen)(div, "clickedOutside",
         /*clickedOutside_handler*/
@@ -24075,6 +24073,81 @@ var Users = /*#__PURE__*/function (_SvelteComponent) {
 }(svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Users);
+
+/***/ }),
+
+/***/ "./resources/js/Pages/Goodbye.svelte":
+/*!*******************************************!*\
+  !*** ./resources/js/Pages/Goodbye.svelte ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var svelte_internal__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! svelte/internal */ "./node_modules/svelte/internal/index.mjs");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+/* resources\js\Pages\Goodbye.svelte generated by Svelte v3.37.0 */
+
+
+function create_fragment(ctx) {
+  var div;
+  return {
+    c: function c() {
+      div = (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.element)("div");
+      div.innerHTML = "<h1 class=\"text-8xl text-gray-800 dark:text-white font-display\">Goodbye!</h1> \n  <p class=\"mt-24\">BetterDiscordLibrary is officially shutting down in favour of the new and official BetterDiscord website.</p> \n  <p class=\"mt-2\">All data will be deleted.</p> \n\n  <a href=\"https://betterdiscord.app\" class=\"btn btn-primary py-6 px-8 inline-flex bg-teal-500 hover:bg-teal-400 focus:ring-teal-500 focus:ring-opacity-40 text-2xl mt-24\">Take me to the new site</a>";
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.attr)(div, "class", "wrap py-24 text-center");
+    },
+    m: function m(target, anchor) {
+      (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.insert)(target, div, anchor);
+    },
+    p: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    i: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    o: svelte_internal__WEBPACK_IMPORTED_MODULE_0__.noop,
+    d: function d(detaching) {
+      if (detaching) (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.detach)(div);
+    }
+  };
+}
+
+var Goodbye = /*#__PURE__*/function (_SvelteComponent) {
+  _inherits(Goodbye, _SvelteComponent);
+
+  var _super = _createSuper(Goodbye);
+
+  function Goodbye(options) {
+    var _this;
+
+    _classCallCheck(this, Goodbye);
+
+    _this = _super.call(this);
+    (0,svelte_internal__WEBPACK_IMPORTED_MODULE_0__.init)(_assertThisInitialized(_this), options, null, create_fragment, svelte_internal__WEBPACK_IMPORTED_MODULE_0__.safe_not_equal, {});
+    return _this;
+  }
+
+  return Goodbye;
+}(svelte_internal__WEBPACK_IMPORTED_MODULE_0__.SvelteComponent);
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Goodbye);
 
 /***/ }),
 
@@ -46256,6 +46329,7 @@ var map = {
 	"./Admin/Addons.svelte": "./resources/js/Pages/Admin/Addons.svelte",
 	"./Admin/Announcement.svelte": "./resources/js/Pages/Admin/Announcement.svelte",
 	"./Admin/Users.svelte": "./resources/js/Pages/Admin/Users.svelte",
+	"./Goodbye.svelte": "./resources/js/Pages/Goodbye.svelte",
 	"./Home.svelte": "./resources/js/Pages/Home.svelte",
 	"./Notifications/Index.svelte": "./resources/js/Pages/Notifications/Index.svelte",
 	"./Settings/Index.svelte": "./resources/js/Pages/Settings/Index.svelte",

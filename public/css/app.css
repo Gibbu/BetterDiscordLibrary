@@ -1969,6 +1969,18 @@ select {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -1996,6 +2008,9 @@ select {
 .text-left {
   text-align: left;
 }
+.text-center {
+  text-align: center;
+}
 .font-body {
   font-family: Inter, Open Sans, Roboto, sans-serif;
 }
@@ -2018,6 +2033,10 @@ select {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -2033,6 +2052,10 @@ select {
 .text-4xl {
   font-size: 2.25rem;
   line-height: 2.5rem;
+}
+.text-8xl {
+  font-size: 6rem;
+  line-height: 1;
 }
 .font-medium {
   font-weight: 500;

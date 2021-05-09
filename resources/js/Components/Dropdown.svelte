@@ -1,5 +1,4 @@
 <script>
-  import {onMount, tick} from 'svelte';
   import clickOutside from '$lib/clickOutside';
 
   export let btn = '';

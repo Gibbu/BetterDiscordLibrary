@@ -12,7 +12,7 @@ class HomeController extends Controller {
 		return Inertia::render('Home', compact('themes', 'plugins'));
 	}
 
-	public function about() {
-		return Inertia::render('About');
-	}
+	public function goodbye() {
+    return Inertia::render('Goodbye');
+  }
 }

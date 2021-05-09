@@ -14,6 +14,8 @@ use App\Http\Controllers\SettingsController;
 use Illuminate\Support\Facades\Route;
 
 // Global routes
+Route::get('{any}', [HomeController::class, 'goodbye'])->where('any', '.*');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['prefix' => 'users'], function() {
